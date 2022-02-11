@@ -28,6 +28,7 @@ switch ($acao) {
         $finalizado = 0;
         $status = $_POST['status'];
         $categoria = $_POST['categoria'];
+        $arrematado_em = NULL;
 
         if (!empty($_FILES) && !$_FILES['img']['error'][0]) {
             $dir = '../uploads/leilao/img/';
@@ -59,8 +60,9 @@ switch ($acao) {
             $image_thumb->save($file_thumb);
         }
 
-        $query = "INSERT INTO leiloes VALUES (NULL, " . $id_admin . ", '" . $categoria . "', '" . $titulo . "', '" . $descricao . "', " . $duracao . ", '" . $comeca_em . "', '" . $finaliza_em . "', " . $quantidade . ", '" . $valor . "', " . $num_lances . ", " . $frete . ", " . $arremate . ", " . $destaque . ", " . $status . ", NULL, 0)";
+        $query = "INSERT INTO leiloes VALUES (NULL, " . $id_admin . ", '" . $categoria . "', '" . $titulo . "', '" . $descricao . "', '" . $duracao . "', '" . $comeca_em . "', '" . $finaliza_em . "', '" . $quantidade . "', '" . $valor . "', '" . $num_lances . "', '" . $frete . "', '" . $arremate . "', '" . $destaque . "', '" . $status . "','" . $arrematado_em . "', '" . $finalizado . "')";
         $result = $pdo->query($query);
+        var_dump($result);
 
 
         $query = "SELECT id FROM leiloes WHERE titulo = '" . $titulo . "' AND descricao = '" . $descricao . "'";
@@ -98,7 +100,7 @@ switch ($acao) {
 
                         $query = "INSERT INTO imagens VALUES (NULL, " . $id_leilao . ", '" . $src_imagem . "')";
                         $result = $pdo->query($query);
-                        $result = $result->fetchAll(PDO::FETCH_ASSOC);
+
                     }
                 }
             }

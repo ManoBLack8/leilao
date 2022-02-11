@@ -177,43 +177,30 @@ switch ($acao) {
         $id = $_REQUEST['id'];
 
         $query = "UPDATE banners SET status = 1 WHERE id = " . $id;
-        $result = mysql_query($query);
+        $result = $pdo->query($query);
 
         $query = "SELECT id FROM banners WHERE id = " . $id . " AND status = 1";
-        $result = mysql_query($query);
-        $num_result = mysql_num_rows($result);
+        $result = $pdo->query($query);
+        $result = $result->fetchAll(PDO::FETCH_ASSOC);
+        $num_result = count($result);
 
-        if ($num_result > 0) {
-            $_SESSION['msg_success'] = 'Banner ativado com sucesso!';
-
-            header('location: ../banner');
-        } else {
-            $_SESSION['msg_error'] = 'Erro ao ativar o banner!';
-
-            header('location: ../banner');
-        }
-
+        header('location: ../banner.php');
+    
         break;
 
     case 'itv':
         $id = $_REQUEST['id'];
 
         $query = "UPDATE banners SET status = 0 WHERE id = " . $id;
-        $result = mysql_query($query);
+        $result = $pdo->query($query);
 
         $query = "SELECT id FROM banners WHERE id = " . $id . " AND status = 0";
-        $result = mysql_query($query);
-        $num_result = mysql_num_rows($result);
+        $result = $pdo->query($query);
+        $result = $result->fetchAll(PDO::FETCH_ASSOC);
+        $num_result = count($result);
 
-        if ($num_result > 0) {
-            $_SESSION['msg_success'] = 'Banner inativado com sucesso!';
-
-            header('location: ../banner');
-        } else {
-            $_SESSION['msg_error'] = 'Erro ao inativar o banner!';
-
-            header('location: ../banner');
-        }
+        header('location: ../banner.php');
+        
 
         break;
 }

@@ -59,11 +59,11 @@ $_SESSION['pagina_anterior'] = basename($_SERVER['SCRIPT_NAME']);
                                 <span><?php echo @$_SESSION['login_usuario']; ?></span>
                                 <div class="btsUsuario">
                                     <a href="deslogar" class="btSair">Sair</a>
-                                    <a href="#">Comprar lances</a>
+                                    <a href="comprar-lances">Comprar lances</a>
                                 </div>
                             </div>
                             <div class="lancesUsuario">
-                                <span><?php echo @$_SESSION['num_lances_usuario']; ?> lances</span>
+                                <span id="lances_usuarios"><?php echo @$_SESSION['num_lances_usuario']; ?> lances</span>
                                 <p>0 pontos</p>
                             </div>
                         </div>

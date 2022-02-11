@@ -36,7 +36,7 @@
 
     
     //AND comeca_em >= '$datetime_atual'
-    $query_leiloes = "SELECT *, DATE_FORMAT(comeca_em, '%d/%m/%Y') AS data_inicio, DATE_FORMAT(comeca_em, '%T') AS hora_inicio FROM leiloes WHERE status = 1 ORDER BY comeca_em ASC ";
+    $query_leiloes = "SELECT *,leiloes.id AS id, DATE_FORMAT(comeca_em, '%d/%m/%Y') AS data_inicio, DATE_FORMAT(comeca_em, '%T') AS hora_inicio FROM leiloes LEFT OUTER JOIN imagens ON imagens.id_leilao = leiloes.id  WHERE leiloes.status = 1 ORDER BY comeca_em ASC ";
     $result_leiloes = $pdo->query($query_leiloes);
     $res = $result_leiloes->fetchAll(PDO::FETCH_ASSOC);
     $num_leiloes = count($res);
@@ -44,23 +44,19 @@
     $count = 1;
     if ($num_leiloes > 0) {
         foreach ($res as $leilao) {
-
             $lance_valor = 0;
             $lance_usuario = "---";
 
-            $query_lances = "SELECT SUM(l.valor_lance), l.valor_lance, u.login FROM lances l, usuarios u WHERE l.id_leilao = " . $leilao['id'] . " ORDER BY l.id DESC LIMIT 0, 1";
+            $query_lances = "SELECT * FROM lances LEFT JOIN usuarios ON usuarios.id = lances.id_usuario WHERE id_leilao = " . $leilao['id'] . "";
             $result_lances = $pdo->query($query_lances);
             $dados3 = $result_lances->fetchAll(PDO::FETCH_ASSOC);
             $num_lances = count($dados3);
 
-            if ($num_lances > 0) {
+        
                 foreach ($dados3 as $lance) {
-                    var_dump($lance);
-                    $lance_valor = $lance['SUM(l.valor_lance)'];
                     $lance_usuario = $lance['login'];
                 }
-                array_push($leilao, 'duracao');
-            }
+            
             ?>
             <div class="<?=  ($count %3 == 0) ? 'produto-ult' : 'produto'; ?>" id="leilao_<?= $leilao['id'] ?>">
                 <?php if ($leilao['comeca_em'] > $datetime_atual): ?>
@@ -94,13 +90,12 @@
                 </a>	
 
                 <div class="valor-prod">
-                    <span id="valor_<?= $leilao['id'] ?>">R$</span>
+                    <span id="valor_<?= $leilao['id'] ?>">R$ <?= $leilao['valor_item'] ?></span>
                     <!--<p>95% de economia</p>-->
                 </div>
 
                 <div class="box-lance" id="box_lance_<?= $leilao['id'] ?>">
-                    <div class="box-contador contador-verde" id="cont_<?= $leilao['id'] ?>">--</div>
-
+                    <div class="box-contador contador-verde" id="cont_<?= $leilao['id'] ?>"><?= $leilao['duracao'] ?></div>
                     <div class="lance-usuario">
                         <!--<a href="#">--><button type="button" class="button_submit" value="<?= $leilao['id'] ?>"><img src="img/bt-lance.png" title="Lance" alt="Lance" /></button><!--</a>-->
                         <p id="usuario_<?= $leilao['id'] ?>" class="usuario_lance"><?= $lance_usuario; ?></p>

@@ -6,7 +6,7 @@
 
     <!-- Content -->
     <div class="content">
-        <div class="title"><h5>Leilões</h5><span id="action-add"><a href="leilao_adicionar" title="Adicionar" class="btn14 mr5"><img src="images/icons/dark/add.png" alt="adicionar" title="adicionar" /></a></span></div>
+        <div class="title"><h5>Leilões</h5><span id="action-add"><a href="leilao_adicionar.php" title="Adicionar" class="btn14 mr5"><img src="images/icons/dark/add.png" alt="adicionar" title="adicionar" /></a></span></div>
 
         <?php if(isset($_SESSION['msg_error']) && !empty($_SESSION['msg_error'])): ?>
             <div class="nNote nFailure hideit">
