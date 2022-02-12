@@ -14,7 +14,7 @@ $_SESSION['pagina_anterior'] = basename($_SERVER['SCRIPT_NAME']);
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Leiulão duarte</title>
+        <title>Leilão Duarte</title>
         <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="css/reset.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="css/geral.css" type="text/css" media="screen" />
@@ -26,7 +26,7 @@ $_SESSION['pagina_anterior'] = basename($_SERVER['SCRIPT_NAME']);
         <div class="boxgeral">
             <div class="geral">
                 <div class="topo">
-                    <a href="./" class="logo-sovinos" title="Leiulão duarte - Voltar ao início">
+                    <a href="./" class="logo-sovinos" title="Leilão Duarte - Voltar ao início">
                         <img src="img/logo.png" alt="" style="width: 100%;">
                     </a>
 

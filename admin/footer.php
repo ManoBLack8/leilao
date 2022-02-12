@@ -1,7 +1,7 @@
 <!-- Footer -->
 <div id="footer">
 	<div class="wrapper">
-    	<span>Leiulão duarte. &copy; Copyright <?php echo date('Y'); ?>. Todos os direitos reservados.</span>
+    	<span>Leilão Duarte. &copy; Copyright <?php echo date('Y'); ?>. Todos os direitos reservados.</span>
     </div>
 </div>
 </body>
