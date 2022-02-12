@@ -56,12 +56,4 @@
     </div>
     <div class="fix"></div>
 </div>
-<?php
-//excluindo as informações do usuário usadas para edição
-unset($_SESSION['id_edit']);
-unset($_SESSION['titulo_edit']);
-unset($_SESSION['slug_edit']);
-unset($_SESSION['conteudo_edit']);
-unset($_SESSION['status_edit']);
-?>
 <?php include_once 'footer.php'; ?>

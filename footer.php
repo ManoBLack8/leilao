@@ -58,7 +58,7 @@
         </div>
         <div class="boxgeral-rodape"></div>
         <div class="copyright">
-            <p><b>Sovinos.com</b> - Todos os direitos reservados</p>
+            <p><b>Leiulão duarte</b> - Todos os direitos reservados</p>
         </div>
         <!-- jquery e script's -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -123,7 +123,6 @@
             
             function set_lance(id_leilao){
                 var iduser = <?php echo (isset($_SESSION['id_usuario'])) ? $_SESSION['id_usuario'] : 0; ?>;
-                
                 if(iduser == 0){
                     alert("É necessário efetuaro login para dar lances");
                     return false;
@@ -133,6 +132,7 @@
                     'lances_ajax.php',
                     { action: "set", id: id_leilao, id_usuario: iduser },
                     function(data){
+                        
                     }, 'json'
                 );
             }
@@ -141,7 +141,6 @@
                 'contador.php',
                 { action: "get" },
                 function(data){
-                    alert(data);
                     
                 }, 'json'
             );

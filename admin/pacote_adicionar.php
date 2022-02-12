@@ -16,6 +16,20 @@
                 <div class="widget">
                     <div class="head"><h5 class="iList">Pacotes de Lances</h5></div>
                     <div class="rowElem noborder">
+                        <label>titulo</label>
+                        <div class="formRight">
+                            <input type="text" class="validate[required]" name="titulo" id="titulo"/>
+                        </div>
+                        <div class="fix"></div>
+                    </div>
+                    <div class="rowElem noborder">
+                        <label>imagem</label>
+                        <div class="formRight">
+                            <input type="file" name="img[]" id="titulo"/>
+                        </div>
+                        <div class="fix"></div>
+                    </div>
+                    <div class="rowElem noborder">
                         <label>Número de Lances:</label>
                         <div class="formRight">
                             <input type="text" class="validate[required,custom[onlyNumberSp]]" name="numLance" id="numLance"/>

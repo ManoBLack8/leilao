@@ -14,19 +14,20 @@ $_SESSION['pagina_anterior'] = basename($_SERVER['SCRIPT_NAME']);
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Sovinos.com</title>
-
+        <title>Leiulão duarte</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="css/reset.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="css/geral.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="css/blinds.css" type="text/css" media="screen" />
+        
     </head>
 
     <body>
         <div class="boxgeral">
             <div class="geral">
                 <div class="topo">
-                    <a href="./" class="logo-sovinos" title="Sovinos.com - Voltar ao início">
-                        <h1>Sovinos.com </h1>
+                    <a href="./" class="logo-sovinos" title="Leiulão duarte - Voltar ao início">
+                        <img src="img/logo.png" alt="" style="width: 100%;">
                     </a>
 
                     <div class="box-login-data">
@@ -52,18 +53,15 @@ $_SESSION['pagina_anterior'] = basename($_SERVER['SCRIPT_NAME']);
                         </div>
                         <?php else: ?>
                         <div class="box-logado">
-                            <div class="imgVaca">
-                                <img src="img/imgVaca" alt="" title="" />
-                            </div>
                             <div class="infosUsuario">
                                 <span><?php echo @$_SESSION['login_usuario']; ?></span>
                                 <div class="btsUsuario">
                                     <a href="deslogar" class="btSair">Sair</a>
-                                    <a href="comprar-lances">Comprar lances</a>
+                                    <a href="#">Comprar lances</a>
                                 </div>
                             </div>
                             <div class="lancesUsuario">
-                                <span id="lances_usuarios"><?php echo @$_SESSION['num_lances_usuario']; ?> lances</span>
+                                <span><?php echo @$_SESSION['num_lances_usuario']; ?> lances</span>
                                 <p>0 pontos</p>
                             </div>
                         </div>

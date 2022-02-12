@@ -102,7 +102,7 @@ if ($num_leilao):
 
                     <table>
                         <tr>
-                            <td> ramonoliver </td>
+                            <td> Éder </td>
                             <td class="valor-tabela"> R$ 0,54 </td>
                         </tr>
                         <tr>
@@ -110,7 +110,7 @@ if ($num_leilao):
                             <td class="valor-tabela"> R$ 0,58 </td>
                         </tr>
                         <tr>
-                            <td> ramonoliver </td>
+                            <td> Éder </td>
                             <td class="valor-tabela"> R$ 0,54 </td>
                         </tr>
                         <tr>
@@ -118,7 +118,7 @@ if ($num_leilao):
                             <td class="valor-tabela"> R$ 0,58 </td>
                         </tr>
                         <tr>
-                            <td> ramonoliver </td>
+                            <td> Éder </td>
                             <td class="valor-tabela"> R$ 0,54 </td>
                         </tr>
                         <tr>
@@ -126,7 +126,7 @@ if ($num_leilao):
                             <td class="valor-tabela"> R$ 0,58 </td>
                         </tr>
                         <tr>
-                            <td> ramonoliver </td>
+                            <td> Éder </td>
                             <td class="valor-tabela"> R$ 0,54 </td>
                         </tr>
                         <tr>
@@ -134,7 +134,7 @@ if ($num_leilao):
                             <td class="valor-tabela"> R$ 0,58 </td>
                         </tr>
                         <tr>
-                            <td> ramonoliver </td>
+                            <td> Éder </td>
                             <td class="valor-tabela"> R$ 0,54 </td>
                         </tr>
                         <tr>
@@ -142,7 +142,7 @@ if ($num_leilao):
                             <td class="valor-tabela"> R$ 0,58 </td>
                         </tr>
                         <tr>
-                            <td> ramonoliver </td>
+                            <td> Éder </td>
                             <td class="valor-tabela"> R$ 0,54 </td>
                         </tr>
                         <tr>
@@ -187,7 +187,7 @@ if ($num_leilao):
 
                         <div class="lance-usuario-p">
                             <a href="#"><img src="img/bt-lance-p.png" title="Lance" alt="Lance"/></a>
-                            <p>ramonoliver</p>
+                            <p>Éder</p>
                         </div>
                     </div>
                 </div>
@@ -208,7 +208,7 @@ if ($num_leilao):
 
                         <div class="lance-usuario-p">
                             <a href="#"><img src="img/bt-lance-p.png" title="Lance" alt="Lance"></a>
-                            <p>ramonoliver</p>
+                            <p>Éder</p>
                         </div>
                     </div>
                 </div>
@@ -229,7 +229,7 @@ if ($num_leilao):
 
                         <div class="lance-usuario-p">
                             <a href="#"><img src="img/bt-lance-p.png" title="Lance" alt="Lance"></a>
-                            <p>ramonoliver</p>
+                            <p>Éder</p>
                         </div>
                     </div>
                 </div>

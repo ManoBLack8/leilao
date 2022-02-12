@@ -9,13 +9,34 @@ switch ($acao) {
     case 'add':
         $num_lances = $_POST['numLance'];
         $preco = $_POST['preco'];
+        $titulo = $_POST['titulo'];
+        $img_src =$_FILES["img"]["name"][0];
 
-        $query = "INSERT INTO pacotes VALUES (NULL, " . $num_lances . ", " . $preco . ")";
-        $result = mysql_query($query);
+        $caminho = '../uploads/pacotes/' .@$_FILES["img"]["name"][0];
+        if (@$_FILES["img"]["name"][0] == ""){
+        $imagem = "sem-foto.jpg";
+        }else{
+        $imagem = @$_FILES["img"]["name"][0]; 
+        }
+
+        $imagem_temp = @$_FILES["img"]['tmp_name'][0]; 
+
+        $ext = pathinfo($imagem, PATHINFO_EXTENSION);   
+        if($ext == 'png' or $ext == 'jpg' or $ext == 'jpeg' or $ext == 'gif' or $ext == 'PNG'){ 
+        move_uploaded_file($imagem_temp, $caminho);
+        }else{
+            echo 'Extensão de Imagem não permitida!';
+            exit();
+        }
+
+
+        $query = "INSERT INTO pacotes VALUES (NULL, '$titulo', '$img_src', '$num_lances', '$preco')";
+        $result = $pdo->query($query);
 
         $query = "SELECT id FROM pacotes WHERE num_lances = " . $num_lances . " AND preco = " . $preco;
-        $result = mysql_query($query);
-        $num_result = mysql_num_rows($result);
+        $result = $pdo->query($query);
+        $result = $result->fetchAll(PDO::FETCH_ASSOC);
+        $num_result = count($result);
 
         if ($num_result > 0) {
             $_SESSION['msg_success'] = 'Pacote de Lance cadastrado com sucesso!';
@@ -33,11 +54,12 @@ switch ($acao) {
         $id = $_REQUEST['id'];
 
         $query = "DELETE FROM pacotes WHERE id = " . $id;
-        $result = mysql_query($query);
+        $result = $pdo->query($query);
 
         $query = "SELECT * FROM pacotes WHERE id = " . $id;
-        $result = mysql_query($query);
-        $num_result = mysql_num_rows($result);
+        $result = $pdo->query($query);
+        $result = $result->fetchAll(PDO::FETCH_ASSOC);
+        $num_result = count($result);
 
         if ($num_result > 0) {
             $_SESSION['msg_error'] = 'Erro ao excluir o pacote de lance!';
@@ -55,11 +77,15 @@ switch ($acao) {
         $id = $_REQUEST['id'];
 
         $query = "SELECT * FROM pacotes WHERE id = " . $id;
-        $result = mysql_query($query);
-        $pacote = mysql_fetch_assoc($result);
+        $result = $pdo->query($query);
+        $result = $result->fetchAll(PDO::FETCH_ASSOC);
+        $pacote = count($result);
 
-        $num_lances = $pacote['num_lances'];
-        $preco = $pacote['preco'];
+        foreach ($result as $pacote) {
+            $num_lances = $pacote['num_lances'];
+            $preco = $pacote['preco'];
+        }
+        
 
         $_SESSION['id_edit'] = $id;
         $_SESSION['num_lances_edit'] = $num_lances;
@@ -75,33 +101,35 @@ switch ($acao) {
         $preco = $_POST['preco'];
 
         $query = "UPDATE pacotes SET num_lances = " . $num_lances . ", preco = " . $preco . " WHERE id = " . $id;
-        $result = mysql_query($query);
+        $result = $pdo->query($query);
 
         $query = "SELECT id FROM pacotes WHERE num_lances = " . $num_lances . " AND preco = " . $preco;
-        $result = mysql_query($query);
-        $num_result = mysql_num_rows($result);
+        $result = $pdo->query($query);
+        $result = $result->fetchAll(PDO::FETCH_ASSOC);
+        $num_result = count($result);
 
         if ($num_result > 0) {
             $_SESSION['msg_success'] = 'Pacote de Lance editado com sucesso!';
 
-            header('location: ../pacote');
+            header('location: ../pacote.php');
         } else {
             $_SESSION['msg_error'] = 'Erro ao editar o pacote de lance!';
 
-            header('location: ../pacote');
+            header('location: ../pacote.php');
         }
 
         break;
 
-    /*case 'atv':
+    case 'atv':
         $id = $_REQUEST['id'];
 
         $query = "UPDATE admin SET status = 1 WHERE id = " . $id;
-        $result = mysql_query($query);
+        $result = $pdo->query($query);
 
         $query = "SELECT id FROM admin WHERE id = " . $id . " AND status = 1";
-        $result = mysql_query($query);
-        $num_result = mysql_num_rows($result);
+        $result = $pdo->query($query);
+        $result = $result->fetchAll(PDO::FETCH_ASSOC);
+        $num_result = count($result);
 
         if ($num_result > 0) {
             $_SESSION['msg_success'] = 'Administrador ativado com sucesso!';
@@ -119,11 +147,12 @@ switch ($acao) {
         $id = $_REQUEST['id'];
 
         $query = "UPDATE admin SET status = 0 WHERE id = " . $id;
-        $result = mysql_query($query);
+        $result = $pdo->query($query);
 
         $query = "SELECT id FROM admin WHERE id = " . $id . " AND status = 0";
-        $result = mysql_query($query);
-        $num_result = mysql_num_rows($result);
+        $result = $pdo->query($query);
+        $result = $result->fetchAll(PDO::FETCH_ASSOC);
+        $num_result = count($result);
 
         if ($num_result > 0) {
             $_SESSION['msg_success'] = 'Administrador inativado com sucesso!';
@@ -135,6 +164,6 @@ switch ($acao) {
             header('location: ../administrador');
         }
 
-        break;*/
+        break;
 }
 ?>

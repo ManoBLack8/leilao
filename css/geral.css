@@ -40,12 +40,10 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fiel
 }
 
 a.logo-sovinos {
-    width: 211px;
+    width: 130px;
     height: 166px;
     float: left;
     display: block;
-    background: url(../img/logo-sovinos.png) no-repeat;
-    text-indent: -99999px;
     margin: 10px 0 0 0;
 }
 
@@ -57,6 +55,7 @@ a.logo-sovinos {
 }
 
 .box-login {
+    display: flex;
     width: 588px;
     height: 80px;
     float: left;

@@ -60,10 +60,8 @@ switch ($acao) {
             $image_thumb->save($file_thumb);
         }
 
-        $query = "INSERT INTO leiloes VALUES (NULL, " . $id_admin . ", '" . $categoria . "', '" . $titulo . "', '" . $descricao . "', '" . $duracao . "', '" . $comeca_em . "', '" . $finaliza_em . "', '" . $quantidade . "', '" . $valor . "', '" . $num_lances . "', '" . $frete . "', '" . $arremate . "', '" . $destaque . "', '" . $status . "','" . $arrematado_em . "', '" . $finalizado . "')";
+        $query = "INSERT INTO leiloes VALUES (NULL, " . $id_admin . ", '" . $categoria . "', '" . $titulo . "', '" . $descricao . "', '" . $img_src . "', '" . $duracao . "', '" . $comeca_em . "', '" . $finaliza_em . "', '" . $quantidade . "', '" . $valor . "', '" . $num_lances . "', '" . $frete . "', '" . $arremate . "', '" . $destaque . "', '" . $status . "','" . $arrematado_em . "', '" . $finalizado . "')";
         $result = $pdo->query($query);
-        var_dump($result);
-
 
         $query = "SELECT id FROM leiloes WHERE titulo = '" . $titulo . "' AND descricao = '" . $descricao . "'";
         $result = $pdo->query($query);
@@ -72,7 +70,7 @@ switch ($acao) {
 
         if ($num_result > 0) {
             if (!empty($_FILES['img_sec'])) {
-                $leilao = $result;
+                $leilao = $result[0];
                 $id_leilao = $leilao['id'];
 
                 foreach ($_FILES["img_sec"]["error"] as $key => $error) {
@@ -98,16 +96,12 @@ switch ($acao) {
                         $image_thumb->resize(100, 70);
                         $image_thumb->save($file_thumb);
 
-                        $query = "INSERT INTO imagens VALUES (NULL, " . $id_leilao . ", '" . $src_imagem . "')";
-                        $result = $pdo->query($query);
-
                     }
                 }
             }
 
             $_SESSION['msg_success'] = 'Leilão cadastrado com sucesso!';
 
-         header('location: ../leilao.php');
         }
 
         break;
@@ -203,11 +197,7 @@ switch ($acao) {
         $result = $result->fetchAll(PDO::FETCH_ASSOC);
         $num_result = count($result);
 
-        
-        $_SESSION['msg_error'] = '';
-
-        header('location: ../leilao.php');
-        
+    
 
         break;
 

@@ -6,7 +6,7 @@
 
 	<!-- Content -->
     <div class="content">
-    	<div class="title"><h5>Pacotes de Lances</h5><span id="action-add"><a href="pacote_adicionar" title="Adicionar" class="btn14 mr5"><img src="images/icons/dark/add.png" alt="adicionar" title="adicionar" /></a></span></div>
+    	<div class="title"><h5>Pacotes de Lances</h5><span id="action-add"><a href="pacote_adicionar.php" title="Adicionar" class="btn14 mr5"><img src="images/icons/dark/add.png" alt="adicionar" title="adicionar" /></a></span></div>
         
         <?php if(isset($_SESSION['msg_error']) && !empty($_SESSION['msg_error'])): ?>
             <div class="nNote nFailure hideit">
@@ -23,7 +23,7 @@
             <div class="head"><h5 class="iFrames">Lista de Pacotes</h5></div>
             <table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
                 <thead>
-                    <tr>
+                    <tr><th>Titulo</th>
                         <th>Número de lances</th>
                         <th>Preço</th>
                         <th class="lastCol">Ações</th>
@@ -37,10 +37,11 @@
                     $query = $pdo->query($sql);
                     $query = $query->fetchAll(PDO::FETCH_ASSOC);
                     
-                    while ($resultset = $query):
+                    foreach ($query as $resultset){
                         $id = $resultset['id'];
                         ?>
                         <tr class="gradeA">
+                            <td><?php echo $resultset['nome']; ?></td>
                             <td><?php echo $resultset['num_lances']; ?></td>
                             <td><?php echo 'R$ ' . $resultset['preco']; ?></td>
                             <td class="center">
@@ -49,7 +50,7 @@
                             </td>
                         </tr>
                         <?php
-                    endwhile;
+                    }
                     ?>
                 </tbody>
             </table>

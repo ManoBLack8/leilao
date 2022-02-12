@@ -174,7 +174,7 @@
         </div>
         <div class="item-usuario">
             <p class="vd-tit">Arrematado por:</p>
-            <span>ramonoliver</span>
+            <span>Éder</span>
         </div>			
         <div class="item-valor-data">
             <div class="item-merc">
@@ -210,8 +210,8 @@
         </div>
         <div class="item-usuario">
             <p class="vd-tit">Arrematado por:</p>
-            <span>ramonoliver</span>
-        </div>			
+            <span>Éder</span>
+        </div>
         <div class="item-valor-data">
             <div class="item-merc">
                 <p class="vd-tit">Iniciado em:</p>
@@ -246,7 +246,7 @@
         </div>
         <div class="item-usuario">
             <p class="vd-tit">Arrematado por:</p>
-            <span>ramonoliver</span>
+            <span>Éder</span>
         </div>			
         <div class="item-valor-data">
             <div class="item-merc">
