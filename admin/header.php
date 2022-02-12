@@ -16,7 +16,7 @@ if (!isset($_SESSION["id_admin"])) {
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Leiulão duarte | Painel Administrativo</title>
+<title>Leilão Duarte | Painel Administrativo</title>
 
 <link href="css/main.css" rel="stylesheet" type="text/css" />
 <link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css' />
