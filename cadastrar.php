@@ -6,12 +6,24 @@
     .input_cadastro input{
         border-radius: 5px;
         width: 300px;
+        height: 25px;
 
     }
+    .radio_cadastro{
+        padding-top: 10px;
+        width: 200px;
+        height: 40px;
+
+    }
+    .btn-success{
+        margin-top: 50px;
+        width: 130px;
+        height: 50px;
+    }
 </style>
-<div>
+<div class="container" style="display: flex;">
     <div>
-        <form action="">
+        <form action="cadastrar_back.php" style="padding-top: 20px;" method="POST">
             <div class="dados_pessoais">
                 <div class="input_cadastro">
                     <label for="">Nome Completo</label><br>
@@ -33,13 +45,13 @@
                 </div>
                 <div class="input_cadastro">
                     <label for="">CPF</label><br>
-                    <input type="text" name="telefone">
+                    <input type="text" name="cpf">
                 </div >
                 <div class="input_cadastro">
                     <label for="">Data de nascimento</label><br>
-                    <input type="date" name="nascimento">
+                    <input type="date" name="data_nascimento">
                 </div>
-                <div class="input_cadastro">
+                <div class="radio_cadastro">
                     <label for="sexo_f">Feminino</label>
                     <input type="radio" id="sexo_f" name="sexo" value="f">
                     <label for="sexo_m">Masculino</label>
@@ -54,7 +66,7 @@
                 <div class="row" style="margin-right:0px; margin-left:0px;">
                     <div class="input_cadastro">
                         <label for="">Estado</label><br>
-                        <input type="text" name="uf">
+                        <input type="text" name="estado">
                     </div>
                     <div class="input_cadastro" style="margin-left: 15px;">
                         <label for="">Cidade</label><br>
@@ -74,7 +86,7 @@
                 <div class="row" style="margin-right:0px; margin-left:0px;">
                     <div class="input_cadastro">
                         <label for="">Numero</label><br>
-                        <input type="text" name="bairro">
+                        <input type="text" name="numero">
                     </div>
                     <div class="input_cadastro" style="margin-left: 15px;">
                         <label for="">Complemento</label><br>
@@ -98,7 +110,7 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn-submit"></button>
+            <button type="submit" class="btn btn-success">Cadastrar-se</button>
         </form>
     </div>
 </div>

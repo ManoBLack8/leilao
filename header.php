@@ -46,7 +46,7 @@ $_SESSION['pagina_anterior'] = basename($_SERVER['SCRIPT_NAME']);
                                 <p><a href="#">Esqueci a senha</a></p>
                             </div>
                             <div class="banner-login">
-                                <a href="#">
+                                <a href="cadastrar.php">
                                     <img src="img/banner-cadastro-topo.png" alt="Cadastre-se e ganhe 5 lances" title="Cadastre-se e ganhe 5 lances" />
                                 </a>
                             </div>
