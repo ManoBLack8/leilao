@@ -77,36 +77,41 @@ function setLance($id_leilao, $id_usuario, $valor_lance, $duracao, $comeca_em) {
     $query = "SELECT num_lances FROM usuarios WHERE id = ". $id_usuario ."";
     $num_lances = $pdo->query($query);
     $num_lances = $num_lances->fetchAll(PDO::FETCH_ASSOC);
-
-    foreach ($num_lances as $nlances) {
-        $perdeu_lance = $nlances['num_lances'] - 1;
-        $query = "UPDATE usuarios SET num_lances = $perdeu_lance WHERE id = $id_usuario";
-        $result = $pdo->query($query);
-        $_SESSION['num_lances_usuario'] = $perdeu_lance;
-
-    }
-
-    $datetime_atual = date("Y-m-d H:i:s", mktime(gmdate("H") - 3, gmdate("i"), gmdate("s"), gmdate("m"), gmdate("d"), gmdate("Y")));
-    $resultado['result'] = FALSE;
-
-    $query = "INSERT INTO lances VALUES (NULL, " . $id_leilao . ", " . $id_usuario . ", '" . $valor_lance . "', '" . $datetime_atual . "')";
-    $result = $pdo->query($query);
-
-    $query = "SELECT id FROM lances WHERE id_leilao = " . $id_leilao . " AND id_usuario = " . $id_usuario . " AND lance_em = '" . $datetime_atual . "'";
-    $result = $pdo->query($query);
-    $result = $result->fetchAll(PDO::FETCH_ASSOC);
-    $num_result = count($result);
-
-    if ($num_result > 0) {
-        if($comeca_em <= $datetime_atual){
-            $nova_duracao = 15;
-            $query = "UPDATE leiloes SET duracao = " . $nova_duracao . " WHERE id = " . $id_leilao;
+    if ($num_lances[0]['num_lances' > 0]) {
+        foreach ($num_lances as $nlances) {
+            $perdeu_lance = $nlances['num_lances'] - 1;
+            $query = "UPDATE usuarios SET num_lances = $perdeu_lance WHERE id = $id_usuario";
             $result = $pdo->query($query);
+            $_SESSION['num_lances_usuario'] = $perdeu_lance;
+    
         }
-
-        $resultado['result'] = TRUE;
+    
+        $datetime_atual = date("Y-m-d H:i:s", mktime(gmdate("H") - 3, gmdate("i"), gmdate("s"), gmdate("m"), gmdate("d"), gmdate("Y")));
+        $resultado['result'] = FALSE;
+    
+        $query = "INSERT INTO lances VALUES (NULL, " . $id_leilao . ", " . $id_usuario . ", '" . $valor_lance . "', '" . $datetime_atual . "')";
+        $result = $pdo->query($query);
+    
+        $query = "SELECT id FROM lances WHERE id_leilao = " . $id_leilao . " AND id_usuario = " . $id_usuario . " AND lance_em = '" . $datetime_atual . "'";
+        $result = $pdo->query($query);
+        $result = $result->fetchAll(PDO::FETCH_ASSOC);
+        $num_result = count($result);
+    
+        if ($num_result > 0) {
+            if($comeca_em <= $datetime_atual){
+                $nova_duracao = 15;
+                $query = "UPDATE leiloes SET duracao = " . $nova_duracao . " WHERE id = " . $id_leilao;
+                $result = $pdo->query($query);
+            }
+    
+            $resultado['result'] = TRUE;
+        }
+        return $resultado;
+    }else{
+        return "você não tem mais lances";
     }
-    return $resultado;
+    
+
 }
 
 $action = @$_REQUEST['action'];
