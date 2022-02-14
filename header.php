@@ -73,13 +73,12 @@ $_SESSION['pagina_anterior'] = basename($_SERVER['SCRIPT_NAME']);
                     </div>
                 </div>
 
-                <div class="menu">
-                    <ul>
-                        <li class="bt-home"><a href="#">Home</a></li>
+                <div class="menu" style="display: flex; justify-content: center;">
+                    <ul style="align-items: center;">
+                        <li class="bt-home"><a href="./">Home</a></li>
                         <li class="bt-cadastro"><a href="cadastrar.php">Cadastro</a></li>
-                        <li class="bt-como-funciona"><a href="#">Como Funciona</a></li>
                         <li class="bt-depoimentos"><a href="#">Depoimentos</a></li>
-                        <li class="bt-ajuda"><a href="#">Ajuda</a></li>
-                        <li class="bt-contato"><a href="#">Contato</a></li>
+                        <li class="bt-ajuda"><a href="comprar.php">Comprar Lances</a></li>
+                        <li class="bt-contato"><a href="contato.php">Contato</a></li>
                     </ul>
                 </div>

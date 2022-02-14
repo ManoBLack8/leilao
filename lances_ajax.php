@@ -27,17 +27,6 @@ function getLances() {
 
                 if ($leilao['duracao'] == 0) $leilao['finalizou'] = TRUE;
                 
-                /*if ($leilao['duracao'] == 0) {
-                    $query_up = "UPDATE leiloes SET arrematado_em = '" . $datetime_atual . "', finalizado = 1 WHERE id = " . $leilao['id'];
-                    $result_up = mysql_query($query_up);
-
-                    $leilao['finalizou'] = TRUE;
-                } else {
-                    $leilao['duracao'] = $leilao['duracao'] - 1;
-
-                    $query_up = "UPDATE leiloes SET duracao = " . $leilao['duracao'] . " WHERE id = " . $leilao['id'];
-                    $result_up = mysql_query($query_up);
-                }*/
             }
 
             $leilao['duracao'] = ($leilao['duracao'] < 10) ? "0" . $leilao['duracao'] : $leilao['duracao'];

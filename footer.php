@@ -146,7 +146,7 @@
             );
             }
             
-            setInterval(get_data_hora(), 100);
+            setInterval(function(){ get_data_hora() }, 1000);
             setInterval(function(){ get_lances() }, 100);
             setInterval(function(){ get_contador() }, 1000);
         </script>
