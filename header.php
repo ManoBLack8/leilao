@@ -76,7 +76,7 @@ $_SESSION['pagina_anterior'] = basename($_SERVER['SCRIPT_NAME']);
                 <div class="menu">
                     <ul>
                         <li class="bt-home"><a href="#">Home</a></li>
-                        <li class="bt-cadastro"><a href="#">Cadastro</a></li>
+                        <li class="bt-cadastro"><a href="cadastrar.php">Cadastro</a></li>
                         <li class="bt-como-funciona"><a href="#">Como Funciona</a></li>
                         <li class="bt-depoimentos"><a href="#">Depoimentos</a></li>
                         <li class="bt-ajuda"><a href="#">Ajuda</a></li>

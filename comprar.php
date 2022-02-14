@@ -1,9 +1,10 @@
 <?php require_once('header.php');
 $query = $pdo->query("SELECT * FROM pacotes");
 $query = $query->fetchAll(PDO::FETCH_ASSOC);
+$peso = 1;
 ?>
 <style>
-.produtinho {
+.produtinho form{
     border: solid 1px;
     width: 260px;
     height: 260px;
@@ -35,10 +36,29 @@ $query = $query->fetchAll(PDO::FETCH_ASSOC);
         
      ?>
         <div class="produtinho">
-            <div class="produto_imagem"><?= $pacote["img_src"] ?></div>
-            <div class="produto_texto"><?= $pacote["nome"] ?></div>
-            <div class="produto_preco"><button><h1>R$ <?= number_format($pacote["preco"], 2, ',', '.'); ?></h1></button></div>
+            <form action="https://pagseguro.uol.com.br/v2/checkout/payment.html" method="post">
 
+                <input name="itemId1" type="hidden" value="<?= $pacote["id"] ?>">
+                <input name="itemDescription1" type="hidden" value="<?= $pacote["nome"]?>">  
+                <input name="itemAmount1" type="hidden" value="<?= $pacote["preco"]?>">  
+                <input name="itemQuantity1" type="hidden" value="1"> 
+                <input name="itemWeight1" type="hidden" value="<?= $peso ?>">
+
+                <input name="receiverEmail" type="hidden" value="viniciusfe66@gmail.com">  
+                <input name="currency" type="hidden" value="BRL">  
+                <!-- Código de referência do pagamento no seu sistema (opcional) -->  
+                <input name="reference" type="hidden" value="leilao">  
+                
+                <!-- Informações de frete (opcionais) -->  
+                <input name="shippingType" type="hidden" value="3">
+
+                <input name="shippingAddressCountry" type="hidden" value="BRA">  
+
+                <div class="produto_imagem"><?= $pacote["img_src"] ?></div>
+                <div class="produto_texto"><?= $pacote["nome"] ?></div>
+                <div class="produto_preco"><button type="submit"><h1>R$ <?= number_format($pacote["preco"], 2, ',', '.'); ?></h1></button></div>
+                
+            </form>
         </div>
     <?php } ?>
 
