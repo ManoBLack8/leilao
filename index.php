@@ -98,7 +98,7 @@ var_dump($_SESSION);?>
                 <div class="box-lance" id="box_lance_<?= $leilao['id'] ?>">
                     <div class="box-contador contador-verde" id="cont_<?= $leilao['id'] ?>"><?= $leilao['duracao'] ?></div>
                     <div class="lance-usuario">
-                        <!--<a href="#">--><button type="button" class="button_submit" value="<?= $leilao['id'] ?>"><img src="img/bt-lance.png" title="Lance" alt="Lance" /></button><!--</a>-->
+                        <!--<a href="#">--><button type="button" class="button_submit" value="<?= $leilao['id'] ?>" style="width: 120px; height:50px; border-radius:20px; font-size:24px; background:#82C305; color:#fff;">Lance</button><!--</a>-->
                         <p id="usuario_<?= $leilao['id'] ?>" class="usuario_lance"><?= $lance_usuario; ?></p>
                     </div>
                 </div>
