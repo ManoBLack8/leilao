@@ -1,10 +1,10 @@
 <?php
 session_start();
 include_once('admin/includes/conexao.php');
-$notificationcode = preg_replace('/[^[:alnum:]-]/','','7BA5D450-2889-4BBA-918F-57200F7988FF');
+$notificationcode = preg_replace('/[^[:alnum:]-]/','',$_REQUEST["code"]);
 
-$data['token'] = '0fe1b16d-3434-46a9-ae56-e971c7c7dc38418cd3d64d5d8fee9d4e689fb5eda525e548-6b70-4348-8073-32f468117970';
-$data['email'] = 'viniciusfe66@gmail.com';
+$data['token'] = '4dfe6e4d-cdd6-4c91-923a-2e925a6554a134c7b07e4828a8c7f46cfb30c5f5fb483840-7674-4b23-9d4b-50ef84c524d7';
+$data['email'] = 'ederaddj@gmail.com';
 
 $data = http_build_query($data);
 
