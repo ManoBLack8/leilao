@@ -34,7 +34,7 @@ function getLances() {
             $lance_usuario = "---";
             $leilao_id = $leilao['id'];
 
-            $query_lances = "SELECT l.valor_lance, SUM(l.valor_lance), u.login FROM lances l, usuarios u WHERE l.id_leilao = $leilao_id ";
+            $query_lances = "SELECT l.valor_lance, SUM(l.valor_lance), u.login FROM lances l LEFT JOIN usuarios u ON l.id_usuario = u.id WHERE l.id_leilao = $leilao_id";
             //echo $query_lances;
             $result_lances = $pdo->query($query_lances);
             $result_lances = $result_lances->fetchAll(PDO::FETCH_ASSOC);
