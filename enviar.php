@@ -15,7 +15,7 @@ if ($_POST['msgcontato'] === "") {
     
 }
 
-$destinatario = 'viniciusfe66@gmail.com';
+$destinatario = 'ederaddj@gmail.com';
 $assunto = 'Leilão Duarte';
 
 $mensagem = utf8_decode('Nome: '.$_POST['nomecontato']. "\r\n"."\r\n". 'Mensagem: '.$_POST['msgcontato']);
