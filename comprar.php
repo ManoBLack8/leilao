@@ -44,7 +44,7 @@ $peso = 1;
                 <input name="itemQuantity1" type="hidden" value="1"> 
                 <input name="itemWeight1" type="hidden" value="<?= $peso ?>">
 
-                <input name="receiverEmail" type="hidden" value="viniciusfe66@gmail.com">  
+                <input name="receiverEmail" type="hidden" value="ederaddj@gmail.com">  
                 <input name="currency" type="hidden" value="BRL">  
                 <!-- Código de referência do pagamento no seu sistema (opcional) -->  
                 <input name="reference" type="hidden" value="leilao">  
