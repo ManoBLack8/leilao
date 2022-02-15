@@ -103,7 +103,7 @@ switch ($acao) {
             $_SESSION['msg_success'] = 'Leilão cadastrado com sucesso!';
 
         }
-
+        header('location: ../leilao.php');
         break;
 
     case 'del':
@@ -197,8 +197,8 @@ switch ($acao) {
         $result = $result->fetchAll(PDO::FETCH_ASSOC);
         $num_result = count($result);
 
-    
-
+            
+        header('location: ../leilao.php');
         break;
 
     case 'atv':
