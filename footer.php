@@ -105,6 +105,7 @@
                     for(i=0; i < data.lances.length; i++){
                         if(data.lances[i]['finalizou']){
                             $('#box_lance_'+data.lances[i]['id']).html("<h3>Arrematado!</h3><p>"+data.lances[i]['usuario']+"</p>");
+                            if(valor != data.lances[i]['valor_lance']) $('#valor_'+data.lances[i]['id']).html("R$ "+data.lances[i]['valor_lance']);
                         } else {
                             if(data.lances[i]['comecou']) $('#targe_'+data.lances[i]['id']).css('display', 'none');
                             var valor = $('#valor_'+data.lances[i]['id']).html();
