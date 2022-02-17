@@ -24,8 +24,13 @@ for ($i=0; $i < $num_leiloes; $i++) {
             
             if ($num_lances > 0) {
                 foreach ($result_lances as $lance) {
-                    $query = "INSERT INTO vencedores VALUES (NULL, " . $lance['id'] . ")";
-                    $result = $pdo->query($query);
+                    $query_lances = "SELECT * FROM vencedores WHERE id_lance = " . $lance['id'] . "";
+                    $result_lances = $pdo->query($query_lances);
+                    $result_lances = $result_lances->fetchAll(PDO::FETCH_ASSOC);
+                    if (count($result_lances) < 1) {
+                        $query = "INSERT INTO vencedores VALUES (NULL, " . $lance['id'] . ")";
+                        $result = $pdo->query($query);
+                    }
                 }
             }
             

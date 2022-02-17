@@ -73,7 +73,7 @@ $_SESSION['pagina_anterior'] = basename($_SERVER['SCRIPT_NAME']);
                             <div class="infosUsuario">
                                 <span><?php echo @$_SESSION['login_usuario']; ?></span>
                                 <div class="btsUsuario">
-                                    <a href="deslogar" class="btSair">Sair</a>
+                                    <a href="deslogar.php" class="btSair">Sair</a>
                                     <a href="#">Comprar lances</a>
                                 </div>
                             </div>
