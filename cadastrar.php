@@ -20,6 +20,9 @@
         width: 130px;
         height: 50px;
     }
+    .hidden {
+        display: none !important;
+    }
 </style>
 <div class="container" style="display: flex;">
     <div>
@@ -51,14 +54,14 @@
                     <label for="">Data de nascimento</label><br>
                     <input type="date" name="data_nascimento">
                 </div>
-                <div class="radio_cadastro">
+                <div class="radio_cadastro hidden">
                     <label for="sexo_f">Feminino</label>
                     <input type="radio" id="sexo_f" name="sexo" value="f">
                     <label for="sexo_m">Masculino</label>
                     <input type="radio" id="sexo_m" name="sexo" value="M">
                 </div>
             </div>
-            <div class="dados_endereco">
+            <div class="dados_endereco hidden">
                 <div>
                     <label for="">CEP</label><br>
                     <input type="text" name="cep">
