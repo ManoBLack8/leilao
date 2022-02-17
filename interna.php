@@ -1,323 +1,157 @@
-<?php include('header.php'); ?>
+<?php require_once("header.php");
+$id2 = $_GET['id'];
+$query = $pdo->query("SELECT * FROM leiloes where id = '" . $id2 . "' ");
+   $res = $query->fetchAll(PDO::FETCH_ASSOC);
+   $nome2 = $res[0]['titulo'];
+   $imagem2 = $res[0]['img_src'];
+   $desc2 = $res[0]['descricao'];
+   
 
-<?php
-$slug = @$_GET['slug'];
+$query2 = $pdo->query("SELECT * FROM imagens where id_leilao = '" . $id2 . "' ");
+$ress = $query2->fetchAll(PDO::FETCH_ASSOC);
+?>
 
-$sql_leiloes = "SELECT * FROM leiloes WHERE slug = '" . $slug . "' AND status = 1";
-$result_leilao = $pdo->query($sql_leiloes);
-$result_leilao = $result_leilao->fetchAll(PDO::FETCH_ASSOC);
-$num_leilao = count($result_leilao);
+    <!-- Product Details Section Begin -->
+    <section class="product-details spad">
+        <div class="container" style="display: flex;">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                <div class="sp-img_area">
+                            <div class="sp-img_slider slick-img-slider kenne-element-carousel" data-slick-options='{
+                            "slidesToShow": 1,
+                            "arrows": false,
+                            "fade": true,
+                            "draggable": false,
+                            "swipe": false,
+                            "asNavFor": ".sp-img_slider-nav"
+                            }'>
+                            <div class="single-slide zoom">
+                                    <img src="admin/uploads/leilao/img/<?= $imagem2 ?>" alt="Kenne's Product Image">
+                                </div>
+                            <?php
+                                for ($i=0; $i < count($ress); $i++) {
+                                        $id = $ress[$i]['id'];
+                                        $imagem = $ress[$i]['src_imagem'];
+                                    ?>
+                                <div class="single-slide zoom">
+                                    <img src="admin/uploads/leilao/img/<?= $imagem ?>" alt="Kenne's Product Image">
+                                </div><?php } ?>
+                            </div>
+                            <div class="sp-img_slider-nav slick-slider-nav kenne-element-carousel arrow-style-2 arrow-style-3" data-slick-options='{
+                            "slidesToShow": 3,
+                            "asNavFor": ".sp-img_slider",
+                            "focusOnSelect": true,
+                            "arrows" : true,
+                            "spaceBetween": 30
+                            }' data-slick-responsive='[
+                                    {"breakpoint":1501, "settings": {"slidesToShow": 3}},
+                                    {"breakpoint":1200, "settings": {"slidesToShow": 2}},
+                                    {"breakpoint":992, "settings": {"slidesToShow": 4}},
+                                    {"breakpoint":768, "settings": {"slidesToShow": 3}},
+                                    {"breakpoint":575, "settings": {"slidesToShow": 2}}
+                                ]'>
+                                <div class="single-slide">
+                                    <img src="img/produtos/<?= $imagem2 ?>" alt="Kenne's Product Image">
+                                </div>
+                                <?php
+                                for ($i=0; $i < count($ress); $i++) {
+                                        $id = $ress[$i]['id'];
+                                        $imagem = $ress[$i]['imagens'];
+                                    ?>
+                                <div class="single-slide">
+                                    <img src="img/produtos/<?= $imagem ?>" alt="Kenne's Product Image">
+                                </div><?php } ?>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="product__details__text">
+                        <h3><?= $nome2 ?></h3>
+                        <div class="product__details__price">R$<?= $valor ?></div>
+                        <p>
+                        <?= $desc2 ?>
+                        </p>
+                          <a class="site-btn" href="shop-detalhes.php?id=<?= $id2?>&funcao=carrinho">Comprar</a>
+                        <ul>
+                            <li><b>Tamanho:</b> <span><?= $tamanho2 ?></span></li>
+                            <li><b>Tamanho veste:</b> <span><?= $tamanhove2 ?></span></li>
+                            <li><b>Compartlhe em:</b>
+                                <div class="sharethis-inline-share-buttons"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  
+    <!-- Modal -->
+<div class="modal" id="modalCarrinho" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <?php
+                   $query = $pdo->query("SELECT * FROM produtos where id = '" . @$_GET["id"]. "' ");
+                   $res = $query->fetchAll(PDO::FETCH_ASSOC);
+                   $nome2 = $res[0]['nome'];
+                   
+?>
+                <h5 class="modal-title">Carrinho de compras</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
 
-$sql_paginas = "SELECT * FROM paginas WHERE slug = '" . $slug . "' AND status = 1";
-$result_pagina = $pdo->query($sql_paginas);
-$result_pagina = $result_pagina->fetchAll(PDO::FETCH_ASSOC);
-$num_pagina = count($result_pagina);
+                <p>Deseja adicionar <?php echo $nome2 ?> ao carrinho</p>
+
+                <div align="center" id="mensagem_excluir" class="">
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn-cancelar-excluir">Não</button>
+                <form method="post">
+
+                    <input type="hidden" id="id"  name="id" value="<?= @$_GET['id'] ?>" required>
+
+                    <button type="button" id="btn-deletar" name="btn-deletar" class="btn btn-success">Sim</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-
-
-$sql_noticias = "SELECT * FROM noticias WHERE slug = '" . $slug . "' AND status = 1";
-$result_noticia = $pdo->query($sql_noticias);
-$result_noticia = $result_noticia->fetchAll(PDO::FETCH_ASSOC);
-$num_noticia = count($result_noticia);
-
-if ($num_leilao):
-    $leilao = $result_leilao;
-
-    $lance_valor = 0;
-    $lance_usuario = "---";
-
-    $query_lances = "SELECT l.valor_lance, u.login FROM lances l, usuarios u WHERE l.id_leilao = " . $leilao['id'] . " ORDER BY l.id DESC LIMIT 0, 1";
-    $result_lances = $pdo->query($query_lances);
-    $result_lances = $result_lances->fetchAll(PDO::FETCH_ASSOC);
-    $num_lances = count($result_lances);
-
-    if ($num_lances > 0) {
-        $lance = $result_lances;
-
-        $lance_valor = $lance['valor_lance'];
-        $lance_usuario = $lance['login'];
+    <?php
+    require_once("footer.php");
+    if (@$_GET['funcao'] == 'carrinho' ){
+        echo "<script>$('#modalCarrinho').modal('show');</script>";
     }
     ?>
-    <div class="conteudo">
-        <div class="tit-conteudo">
-            <h2>Detalhes do leilão</h2>
-        </div>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#btn-deletar').click(function (event) {
+            event.preventDefault();
 
-        <div class="protudo-detalhes">
+            $.ajax({
+                url: "carrinho/inserir_carrinho.php",
+                method: "post",
+                data: $('form').serialize(),
+                dataType: "text",
+                success: function (mensagem) {
 
-            <div class="produto top-0">
-                <a href="#" class="desc-prod">
-                    <h3><?php echo $leilao['titulo'] ?></h3>
-                    
-                    <?php if($leilao['frete_gratis'] || $leilao['arremate_gratis']): ?>
-                        <div style="position:relative;" id="icons_auction_<?php echo $leilao['id'] ?>">
-                            <?php if($leilao['arremate_gratis']): ?>
-                                <div class="product-icon icon-free" title="Valor de Arremate Grátis"></div>
-                            <?php endif; ?>
-                            <?php if($leilao['frete_gratis']): ?>
-                                <div class="product-icon icon-shipping" title="Frete Grátis"></div>
-                            <?php endif; ?>
-                        </div>
-                    <?php endif; ?>
-                    
-                    <div class="img-prod">
-                        <img src="admin/uploads/leilao/img/<?php echo $leilao['img_src']; ?>" alt="<?php echo $leilao['titulo']; ?>" title="<?php echo $leilao['titulo']; ?>" />
-                    </div>
-                </a>	
-
-                <div class="valor-prod">
-                    <span id="valor_<?php echo $leilao['id'] ?>" >R$ <?php echo number_format($lance_valor, 2, ',', '.'); ?></span>
-                    <!--<p>95% de economia</p>-->
-                </div>
-                <div class="box-lance" id="box_lance_<?php echo $leilao['id'] ?>" >
-                    <div class="box-contador contador-verde" id="cont_<?php echo $leilao['id'] ?>"><?php echo $leilao['duracao']; ?></div>
-
-                    <div class="lance-usuario">
-                        <button type="button" class="button_submit" value="<?php echo $leilao['id'] ?>"><img src="img/bt-lance.png" title="Lance" alt="Lance" /></button>
-                        <p id="usuario_<?php echo $leilao['id'] ?>" ><?php echo $lance_usuario; ?></p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="detalhes-gerais">
-                <div class="box-detalhes-produto">
-                    <div class="prodinfo">
-                        <p>Início do cronômetro</p>
-                        <p class="data-leilao">sexta-feira, 09 de Março de 2012 - 11:00</p>
-                    </div>
-
-                    <div class="box-valores">Preço de mercado:<div class="prod_info_preco">R$ <?php echo $leilao['valor_item']; ?></div></div>
-                    <div class="box-valores" >Preço de arremate:<div class="prod_info_preco" id="valor_arremate_<?php echo $leilao['id'] ?>" >R$ 0,00</div></div>
-
-                    <div class="porc-produto" id="porc_produto_<?php echo $leilao['id'] ?>">
-                        <p class="porcentagem" id="porcentagem_<?php echo $leilao['id'] ?>"> 100% </p>
-                        <p> mais barato que o preço em loja </p>
-                    </div>
-                </div>
-
-                <div class="box-ultimos-lances">
-                    <p>Últimos lances:</p>
-
-                    <table>
-                        <tr>
-                            <td> Éder </td>
-                            <td class="valor-tabela"> R$ 0,54 </td>
-                        </tr>
-                        <tr>
-                            <td> romulonobre </td>
-                            <td class="valor-tabela"> R$ 0,58 </td>
-                        </tr>
-                        <tr>
-                            <td> Éder </td>
-                            <td class="valor-tabela"> R$ 0,54 </td>
-                        </tr>
-                        <tr>
-                            <td> romulonobre </td>
-                            <td class="valor-tabela"> R$ 0,58 </td>
-                        </tr>
-                        <tr>
-                            <td> Éder </td>
-                            <td class="valor-tabela"> R$ 0,54 </td>
-                        </tr>
-                        <tr>
-                            <td> romulonobre </td>
-                            <td class="valor-tabela"> R$ 0,58 </td>
-                        </tr>
-                        <tr>
-                            <td> Éder </td>
-                            <td class="valor-tabela"> R$ 0,54 </td>
-                        </tr>
-                        <tr>
-                            <td> romulonobre </td>
-                            <td class="valor-tabela"> R$ 0,58 </td>
-                        </tr>
-                        <tr>
-                            <td> Éder </td>
-                            <td class="valor-tabela"> R$ 0,54 </td>
-                        </tr>
-                        <tr>
-                            <td> romulonobre </td>
-                            <td class="valor-tabela"> R$ 0,58 </td>
-                        </tr>
-                        <tr>
-                            <td> Éder </td>
-                            <td class="valor-tabela"> R$ 0,54 </td>
-                        </tr>
-                        <tr>
-                            <td> romulonobre </td>
-                            <td class="valor-tabela"> R$ 0,58 </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
-            <div class="box-img-produto">
-                <ul>
-                    <?php
-                    $sql_imgs = "SELECT img_src FROM imagens WHERE id_leilao = " . $leilao['id'] . " LIMIT 0, 4";
-                    $result_imgs = $pdo->query($sql_imgs);
-                    $result_imgs = $result_imgs->fetchAll(PDO::FETCH_ASSOC);
-                    $num_imgs = count($result_imgs);
-                    
-                    if($num_imgs > 0){
-                        while($imagem = $result_imgs){
-                            echo '<li><a href="#"><img src="admin/uploads/leilao/thumb/'. $imagem['img_src'] .'" /></a></li>';
-                        }
+                    if (mensagem.trim() === 'Cadastrado com Sucesso!') {
+                        window.location = "carrinho.php";
                     }
-                    ?>
-                </ul>
-            </div>
-        </div>
 
-        <div class="leiloes-interna">
-            <div class="leilao-int-item">
-                <div class="nome-produto-p">
-                    <p> Ipod Nano 8gb - Apple </p>
-                    <p class="valor"> R$ 3,18 </p>
-                </div>
-                <div class="infos-produto-p">
-                    <div class="img-produto-p">
-                        <img src="img/ipodnano.png" title="Ipod Nano" />
-                    </div>
+                    $('#mensagem_excluir').text(mensagem)
 
-                    <div class="infos-conteudo-p">
-                        <div class="contador-verde-p">18</div>
 
-                        <div class="lance-usuario-p">
-                            <a href="#"><img src="img/bt-lance-p.png" title="Lance" alt="Lance"/></a>
-                            <p>Éder</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="leilao-int-item">
-                <div class="nome-produto-p">
-                    <p> Ipod Nano 8gb - Apple </p>
-                    <p class="valor"> R$ 3,18 </p>
-                </div>
-                <div class="infos-produto-p">
-                    <div class="img-produto-p">
-                        <img src="img/ipodnano.png" title="Ipod Nano" />
-                    </div>
+                },
 
-                    <div class="infos-conteudo-p">
-                        <div class="contador-verde-p">18</div>
-
-                        <div class="lance-usuario-p">
-                            <a href="#"><img src="img/bt-lance-p.png" title="Lance" alt="Lance"></a>
-                            <p>Éder</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="leilao-int-item-ult">
-                <div class="nome-produto-p">
-                    <p> Ipod Nano 8gb - Apple </p>
-                    <p class="valor"> R$ 3,18 </p>
-                </div>
-                <div class="infos-produto-p">
-                    <div class="img-produto-p">
-                        <img src="img/ipodnano.png" title="Ipod Nano" />
-                    </div>
-
-                    <div class="infos-conteudo-p">
-                        <div class="contador-verde-p">18</div>
-
-                        <div class="lance-usuario-p">
-                            <a href="#"><img src="img/bt-lance-p.png" title="Lance" alt="Lance"></a>
-                            <p>Éder</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <?php elseif ($num_pagina):
-    $pagina = $result_pagina;
-    ?>
-    <div class="conteudo">
-        <div class="tit-conteudo">
-            <h2><?php echo utf8_encode($pagina['titulo']); ?></h2>
-        </div>
-        <div style="clear:both;"></div>
-        <div id ="container-content"><?php echo utf8_encode($pagina['conteudo']); ?></div>
-
-        <div class="prox-leiloes">
-            <div class="tit-home">
-                <h2>Próximos leilões em destaque</h2>
-            </div>
-
-            <div class="slide-prox-leiloes">
-
-                <div class="conteudo-prox-leiloes">
-                    <ul id="slider1" class="multiple">
-                        <li>
-                            <p class="tit">
-                                <a href="#">Smartphone Galaxy S II, Dua...</a>
-                            </p>
-                            <img alt="Smartphone Galaxy S II, Dual Core, Super AMOLED 4,0, Android 2.3 - SAMSUNG" class="img-destslide" src="http://s3.amazonaws.com/arremateclub.com.br/files/108/medium/7493672GG.png?1314463921" />
-                            <p>08/02 - 16:00</p> 
-                        </li>
-                        <li>
-                            <p class="tit">
-                                <a href="#">Smartphone Galaxy S II, Dua...</a>
-                            </p>
-                            <img alt="Smartphone Galaxy S II, Dual Core, Super AMOLED 4,0, Android 2.3 - SAMSUNG" class="img-destslide" src="http://s3.amazonaws.com/arremateclub.com.br/files/108/medium/7493672GG.png?1314463921" />
-                            <p>08/02 - 16:00</p> 
-                        </li>
-                        <li>
-                            <p class="tit">
-                                <a href="#">Smartphone Galaxy S II, Dua...</a>
-                            </p>
-                            <img alt="Smartphone Galaxy S II, Dual Core, Super AMOLED 4,0, Android 2.3 - SAMSUNG" class="img-destslide" src="http://s3.amazonaws.com/arremateclub.com.br/files/108/medium/7493672GG.png?1314463921" />
-                            <p>08/02 - 16:00</p> 
-                        </li>
-                        <li>
-                            <p class="tit">
-                                <a href="#">Smartphone Galaxy S II, Dua...</a>
-                            </p>
-                            <img alt="Smartphone Galaxy S II, Dual Core, Super AMOLED 4,0, Android 2.3 - SAMSUNG" class="img-destslide" src="http://s3.amazonaws.com/arremateclub.com.br/files/108/medium/7493672GG.png?1314463921" />
-                            <p>08/02 - 16:00</p> 
-                        </li>
-                        <li>
-                            <p class="tit">
-                                <a href="#">Smartphone Galaxy S II, Dua...</a>
-                            </p>
-                            <img alt="Smartphone Galaxy S II, Dual Core, Super AMOLED 4,0, Android 2.3 - SAMSUNG" class="img-destslide" src="http://s3.amazonaws.com/arremateclub.com.br/files/108/medium/7493672GG.png?1314463921" />
-                            <p>08/02 - 16:00</p> 
-                        </li>
-                        <li>
-                            <p class="tit">
-                                <a href="#">Smartphone Galaxy S II, Dua...</a>
-                            </p>
-                            <img alt="Smartphone Galaxy S II, Dual Core, Super AMOLED 4,0, Android 2.3 - SAMSUNG" class="img-destslide" src="http://s3.amazonaws.com/arremateclub.com.br/files/108/medium/7493672GG.png?1314463921" />
-                            <p>08/02 - 16:00</p> 
-                        </li>
-                        <li>
-                            <p class="tit">
-                                <a href="#">Smartphone Galaxy S II, Dua...</a>
-                            </p>
-                            <img alt="Smartphone Galaxy S II, Dual Core, Super AMOLED 4,0, Android 2.3 - SAMSUNG" class="img-destslide" src="http://s3.amazonaws.com/arremateclub.com.br/files/108/medium/7493672GG.png?1314463921" />
-                            <p>08/02 - 16:00</p> 
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <?php
-elseif ($num_noticia):
-    $noticia = $result_noticia;
-    ?>
-
-    <?php
-endif;
-
-include_once 'footer.php';
-?>
+            })
+        })
+    })
+</script>
