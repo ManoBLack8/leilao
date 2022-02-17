@@ -19,6 +19,23 @@ $_SESSION['pagina_anterior'] = basename($_SERVER['SCRIPT_NAME']);
         <link rel="stylesheet" href="css/reset.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="css/geral.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="css/blinds.css" type="text/css" media="screen" />
+        <!-- Fontawesome Star -->
+        <link rel="stylesheet" href="assets/css/fontawesome-stars.min.css">
+        <!-- Ion Icon -->
+        <link rel="stylesheet" href="assets/css/ion-fonts.css">
+        <!-- Slick CSS -->
+        <link rel="stylesheet" href="assets/css/slick.css">
+        <!-- Animation -->
+        <link rel="stylesheet" href="assets/css/animate.min.css">
+        <!-- jQuery Ui -->
+        <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
+        <!-- Nice Select -->
+        <link rel="stylesheet" href="assets/css/nice-select.css">
+        <!-- Timecircles -->
+        <link rel="stylesheet" href="assets/css/timecircles.css">
+
+        <!-- Main Style CSS -->
+        <link rel="stylesheet" href="assets/css/style.css">
         
     </head>
 
