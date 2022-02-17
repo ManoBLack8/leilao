@@ -1,4 +1,8 @@
 <?php require_once('header.php');
+@session_start();
+if (!$_SESSION['id_usuario']) {
+    header('location: index.php');
+}
 $query = $pdo->query("SELECT * FROM pacotes");
 $query = $query->fetchAll(PDO::FETCH_ASSOC);
 $peso = 1;

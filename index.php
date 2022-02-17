@@ -1,5 +1,4 @@
-<?php include('header.php'); 
-var_dump($_SESSION);?>
+<?php include('header.php');?>
 
 <div class="banners">
     <!-- slideshow images -->

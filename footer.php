@@ -5,7 +5,7 @@
             </ul>
         </div>
 
-        <div class="fornecedores">
+        <div class="fornecedores hidden">
             <ul>
                 <li><a href="#"><img src="img/fornecedor1.png" alt="Fornecedor" /></a></li>
                 <li><a href="#"><img src="img/fornecedor2.png" alt="Fornecedor" /></a></li>

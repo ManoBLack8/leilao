@@ -42,7 +42,7 @@ if (!isset($_SESSION["id_admin"])) {
                         </ul>
                     </li>
                     <li><a href="configuracoes" title="Configurações Gerais"><img src="images/icons/topnav/settings.png" alt="" /><span>Configurações</span></a></li>
-                    <li><a href="deslogar" title="Sair da Área Administrativa"><img src="images/icons/topnav/logout.png" alt="" /><span>Sair</span></a></li>
+                    <li><a href="deslogar.php" title="Sair da Área Administrativa"><img src="images/icons/topnav/logout.png" alt="" /><span>Sair</span></a></li>
                 </ul>
             </div>
             <div class="fix"></div>
@@ -55,10 +55,10 @@ if (!isset($_SESSION["id_admin"])) {
     <div class="logo"><a href="/" title=""><img src="images/loginLogo.png" alt="" /></a></div>
     <div class="middleNav">
     	<ul>
-        	<li class="iMes"><a href="#" title=""><span>Support tickets</span></a><span class="numberMiddle">9</span></li>
-            <li class="iStat"><a href="#" title=""><span>Statistics</span></a></li>
-            <li class="iUser"><a href="usuarios" title=""><span>Usuários</span></a></li>
-            <li class="iOrders"><a href="#" title=""><span>Billing panel</span></a></li>
+        	<!--<li class="iMes"><a href="#" title=""><span>Support tickets</span></a><span class="numberMiddle">9</span></li>
+            <li class="iStat"><a href="#" title=""><span>Statistics</span></a></li> -->
+            <li class="iUser"><a href="usuario.php" title=""><span>Usuários</span></a></li>
+            <!--<li class="iOrders"><a href="#" title=""><span>Billing panel</span></a></li>-->
         </ul>
     </div>
     <div class="fix"></div>
