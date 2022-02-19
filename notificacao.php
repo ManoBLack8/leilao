@@ -21,6 +21,7 @@ $refe = $xml->reference;
 $data_envio = $xml->date;
 $code = $xml->code;
 $id_pacote = $xml->items->item->id;
+$id_promotor = $_SESSION['id_promotor'];
 if (!$xml->error) {
     $id_usuarios = $_SESSION["id_usuario"];
 
@@ -28,7 +29,7 @@ if (!$xml->error) {
     $num_compras = $pdo->query($queryy);
     $num_compras = $num_compras->fetchAll(PDO::FETCH_ASSOC);
     if (count($num_compras) == 0) {
-        $query = "INSERT INTO compras VALUES (NULL, '$id_usuarios', '$id_pacote', '$code', '$data_envio', '$refe', '$status')";
+        $query = "INSERT INTO compras VALUES (NULL, '$id_usuarios', '$id_pacote', '$code', '$data_envio', '$refe', '$id_promotor', '$status')";
         $query = $pdo->query($query);
     
         if ($refe == "leilao") {
