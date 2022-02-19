@@ -106,6 +106,7 @@
                         if(data.lances[i]['finalizou']){
                             $('#box_lance_'+data.lances[i]['id']).html("<h3>Arrematado!</h3><p>"+data.lances[i]['usuario']+"</p>");
                             if(valor != data.lances[i]['valor_lance']) $('#valor_'+data.lances[i]['id']).html("R$ "+data.lances[i]['valor_lance']);
+                            if(usuario != data.lances[i]['usuario']) $('#usuario_'+data.lances[i]['id']).html(data.lances[i]['usuario']);
                         } else {
                             if(data.lances[i]['comecou']) $('#targe_'+data.lances[i]['id']).css('display', 'none');
                             var valor = $('#valor_'+data.lances[i]['id']).html();
@@ -123,7 +124,7 @@
             }
             
             function set_lance(id_leilao){
-                var iduser = <?php echo (isset($_SESSION['id_usuario'])) ? $_SESSION['id_usuario'] : 0; ?>;
+                let iduser = <?php echo (isset($_SESSION['id_usuario'])) ? $_SESSION['id_usuario'] : 0; ?>;
                 if(iduser == 0){
                     alert("É necessário efetuaro login para dar lances");
                     return false;
