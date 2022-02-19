@@ -5,7 +5,7 @@ $datetime_atual = date("Y-m-d H:i:s", mktime(gmdate("H") - 3, gmdate("i"), gmdat
 $query_leiloes = "SELECT id, duracao, comeca_em FROM leiloes WHERE status = 1  ORDER BY comeca_em ASC ";
 $result_leiloes = $pdo->query($query_leiloes);
 $result_leiloes = $result_leiloes->fetchAll(PDO::FETCH_ASSOC);
-$num_leiloes = count($result_leiloes); 
+$num_leiloes = count($result_leiloes);
 
 for ($i=0; $i < $num_leiloes; $i++) {
     $id = $result_leiloes[$i]['id'];
@@ -13,6 +13,7 @@ for ($i=0; $i < $num_leiloes; $i++) {
     $duracao = $result_leiloes[$i]['duracao'];
     
     if ($comeca_em <= $datetime_atual) {
+
         if ($duracao == 0) {
             $query_up = "UPDATE leiloes SET arrematado_em = '" . $datetime_atual . "', finalizado = 1 WHERE id = " . $id;
             $result_up = $pdo->query($query_up);

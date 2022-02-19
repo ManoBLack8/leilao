@@ -28,27 +28,28 @@ function getLances() {
                 if ($leilao['duracao'] == 0) $leilao['finalizou'] = TRUE;
                 
             }
-            $duracao_escolher = rand(1, 6);
-
-            if ($leilao['duracao'] < $duracao_escolher) {
-                $id = $leilao['id'];
-
-                $q_leiloes = $pdo->query("SELECT SUM(valor_lance) FROM lances WHERE id_leilao = '$id' AND id_usuario != 37");
-                $q_leiloes = $q_leiloes->fetchAll(PDO::FETCH_ASSOC);
-                $q_leiloes[0]['SUM(valor_lance)'];
-                if ($q_leiloes[0]['SUM(valor_lance)'] < 1500) {
-                    $query = "INSERT INTO lances VALUES (NULL, " . $id . ", '37', '0.01', '" . $datetime_atual . "')";
-                    $result = $pdo->query($query);
-                    $query_up = "UPDATE leiloes SET duracao = 15 WHERE id = " . $id;
-                    $result_up = $pdo->query($query_up);
-                }
-                
-            }
-
             $leilao['duracao'] = ($leilao['duracao'] < 10) ? "0" . $leilao['duracao'] : $leilao['duracao'];
             $lance_valor = 0;
             $lance_usuario = "---";
             $leilao_id = $leilao['id'];
+
+            $duracao_escolher = rand(3, 6);
+            if ($leilao['finalizado'] < 1) {
+                if ($leilao['duracao'] < $duracao_escolher) {
+                    $id = $leilao['id'];
+
+                    $q_leiloes = $pdo->query("SELECT SUM(valor_lance) FROM lances WHERE id_leilao = '$id' AND id_usuario != 37");
+                    $q_leiloes = $q_leiloes->fetchAll(PDO::FETCH_ASSOC);
+                    $q_leiloes[0]['SUM(valor_lance)'];
+                    if ($q_leiloes[0]['SUM(valor_lance)'] < 1500) {
+                        $query = "INSERT INTO lances VALUES (NULL, " . $id . ", '37', '0.01', '" . $datetime_atual . "')";
+                        $result = $pdo->query($query);
+                        $query_up = "UPDATE leiloes SET duracao = '15' WHERE id = " . $id;
+                        $result_up = $pdo->query($query_up);
+                    }
+                    
+                }
+            }
 
             $query_lances = "SELECT l.valor_lance, SUM(l.valor_lance), u.login FROM lances l LEFT JOIN usuarios u ON l.id_usuario = u.id WHERE l.id_leilao = '$leilao_id' ";
             //echo $query_lances;
