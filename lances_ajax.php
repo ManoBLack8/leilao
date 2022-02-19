@@ -28,16 +28,33 @@ function getLances() {
                 if ($leilao['duracao'] == 0) $leilao['finalizou'] = TRUE;
                 
             }
+            $duracao_escolher = rand(1, 6);
+
+            if ($leilao['duracao'] < $duracao_escolher) {
+                $id = $leilao['id'];
+
+                $q_leiloes = $pdo->query("SELECT SUM(valor_lance) FROM lances WHERE id_leilao = '$id' AND id_usuario != 37");
+                $q_leiloes = $q_leiloes->fetchAll(PDO::FETCH_ASSOC);
+                $q_leiloes[0]['SUM(valor_lance)'];
+                if ($q_leiloes[0]['SUM(valor_lance)'] < 1500) {
+                    $query = "INSERT INTO lances VALUES (NULL, " . $id . ", '37', '0.01', '" . $datetime_atual . "')";
+                    $result = $pdo->query($query);
+                    $query_up = "UPDATE leiloes SET duracao = 15 WHERE id = " . $id;
+                    $result_up = $pdo->query($query_up);
+                }
+                
+            }
 
             $leilao['duracao'] = ($leilao['duracao'] < 10) ? "0" . $leilao['duracao'] : $leilao['duracao'];
             $lance_valor = 0;
             $lance_usuario = "---";
             $leilao_id = $leilao['id'];
 
-            $query_lances = "SELECT l.valor_lance, SUM(l.valor_lance), u.login FROM lances l LEFT JOIN usuarios u ON l.id_usuario = u.id WHERE l.id_leilao = $leilao_id";
+            $query_lances = "SELECT l.valor_lance, SUM(l.valor_lance), u.login FROM lances l LEFT JOIN usuarios u ON l.id_usuario = u.id WHERE l.id_leilao = '$leilao_id' ";
             //echo $query_lances;
             $result_lances = $pdo->query($query_lances);
             $result_lances = $result_lances->fetchAll(PDO::FETCH_ASSOC);
+
             $num_lances = count($result_lances);
 
             if ($num_lances > 0) {
@@ -113,9 +130,11 @@ if ($action == "get") {
     $query_num_lances = "SELECT num_lances FROM usuarios WHERE id = " . $id_usuario;
     $result_num_lances = $pdo->query($query_num_lances);
     $result_num_lances = $result_num_lances->fetchAll(PDO::FETCH_ASSOC);
-    $num_num_lances = count($result_num_lances);
+    foreach ($result_num_lances as $num_lances) {
+        $num_num_lances = $num_lances["num_lances"];
+    }
 
-    if ($num_num_lances > 0) {    
+    if ($num_num_lances > 0) {
         $query_lances = "SELECT id_usuario, valor_lance FROM lances WHERE id_leilao = " . $id_leilao . " ORDER BY id DESC LIMIT 0, 1";
         $result_lances = $pdo->query($query_lances);
         $result_lances = $result_lances->fetchAll(PDO::FETCH_ASSOC);
