@@ -4,15 +4,16 @@
                 
             </ul>
         </div>
-
-        <div class="fornecedores hidden">
+        <h1>Parceiros:</h1>
+        <div class="fornecedores">
             <ul>
-                <li><a href="#"><img src="img/fornecedor1.png" alt="Fornecedor" /></a></li>
-                <li><a href="#"><img src="img/fornecedor2.png" alt="Fornecedor" /></a></li>
-                <li><a href="#"><img src="img/fornecedor3.png" alt="Fornecedor" /></a></li>
-                <li><a href="#"><img src="img/fornecedor1.png" alt="Fornecedor" /></a></li>
-                <li><a href="#"><img src="img/fornecedor2.png" alt="Fornecedor" /></a></li>
-                <li class="ult"><a href="#"><img src="img/fornecedor3.png" alt="Fornecedor" /></a></li>
+                <?php 
+                    $q_parceiros = $pdo->query("SELECT * FROM parceiros WHERE status = 1 ORDER BY ordem ASC");
+                    $q_parceiros = $q_parceiros->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($q_parceiros as $parcas) { ?>
+                        <li><a href="#"><img src="admin/uploads/parceiros/thumb/<?= $parcas['logo'] ?>" alt="<?= $parcas['nome'] ?>" /></a></li>
+                        
+                    <?php } ?>
             </ul>
         </div>                
 

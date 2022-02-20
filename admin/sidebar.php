@@ -25,6 +25,7 @@
                 <!--<li><a href="pagina.php">Páginas</a></li>
                 <li><a href="noticia.php">Notícias</a></li>-->
                 <li><a href="banner.php">Banners</a></li>
+                <li><a href="parceiros.php">Parceiros</a></li>
                 <li class="last"><a href="menu">Menu</a></li>
             </ul>
         </li>
