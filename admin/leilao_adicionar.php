@@ -4,7 +4,11 @@ include_once ('includes/conexao.php');
 $sql = " SELECT * FROM categorias ";
 $query = $pdo->query($sql);
 $query = $query->fetchAll(PDO::FETCH_ASSOC);?>
-
+<style>
+    .hidden{
+        display: none;
+    }
+</style>
 <!-- Content wrapper -->
 <div class="wrapper">
     <?php include_once 'sidebar.php'; ?>
@@ -67,10 +71,10 @@ $query = $query->fetchAll(PDO::FETCH_ASSOC);?>
                         <div class="fix"></div>
                     </div>
                     
-                    <div class="rowElem noborder">
+                    <div class="rowElem noborder hidden">
                         <label>Duração:</label>
                         <div class="formRight">
-                            <input type="text" class="validate[required,custom[onlyNumberSp]]" name="duracao" id="duracao" />
+                            <input type="text" class="validate[required,custom[onlyNumberSp]]" name="duracao" id="duracao" value="15" />
                         </div>
                         <div class="fix"></div>
                     </div>

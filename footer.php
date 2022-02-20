@@ -103,6 +103,7 @@
                 { action: "get" },
                 function(data){
                     //alert('valor_'+data.lances[0]['id']);
+                    
                     for(i=0; i < data.lances.length; i++){
                         if(data.lances[i]['finalizou']){
                             $('#box_lance_'+data.lances[i]['id']).html("<h3>Arrematado!</h3><p>"+data.lances[i]['usuario']+"</p>");
@@ -144,6 +145,7 @@
                 'contador.php',
                 { action: "get" },
                 function(data){
+                    get_lances()
                     
                 }, 'json'
             );
@@ -151,7 +153,7 @@
             
             setInterval(function(){ get_data_hora() }, 1000);
             setInterval(function(){ get_lances() }, 100);
-            setInterval(function(){ get_contador() }, 1000);
+            setInterval(function(){ get_contador() }, 1100);
         </script>
         <!-- fim script's -->
 
