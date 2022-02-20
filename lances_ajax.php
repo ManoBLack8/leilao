@@ -51,17 +51,23 @@ function getLances() {
                 }
             }
 
-            $query_lances = "SELECT l.valor_lance, SUM(l.valor_lance), u.login FROM lances l LEFT JOIN usuarios u ON l.id_usuario = u.id WHERE l.id_leilao = '$leilao_id' ";
+            $query_lances = "SELECT valor_lance, login FROM lances l LEFT JOIN usuarios u ON l.id_usuario = u.id WHERE l.id_leilao = '$leilao_id' ";
             //echo $query_lances;
             $result_lances = $pdo->query($query_lances);
             $result_lances = $result_lances->fetchAll(PDO::FETCH_ASSOC);
 
             $num_lances = count($result_lances);
 
+            $query_usu = "SELECT SUM(valor_lance) FROM lances WHERE id_leilao = '$leilao_id' LIMIT 1";
+            //echo $query_lances;
+            $result_usu = $pdo->query($query_usu);
+            $result_usu = $result_usu->fetchAll(PDO::FETCH_ASSOC);
+            
             if ($num_lances > 0) {
                 foreach ($result_lances as $lance) {
+                
                 //print_r($lance);
-                $lance_valor = $lance['SUM(l.valor_lance)'];
+                $lance_valor = $result_usu[0]['SUM(valor_lance)'];
                 $lance_usuario = $lance['login'];
                 }
             }
