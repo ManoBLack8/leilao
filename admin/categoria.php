@@ -6,7 +6,7 @@
 
 	<!-- Content -->
     <div class="content">
-    	<div class="title"><h5>Categorias dos Leilões</h5><span id="action-add"><a href="categoria_adicionar" title="Adicionar" class="btn14 mr5"><img src="images/icons/dark/add.png" alt="adicionar" title="adicionar" /></a></span></div>
+    	<div class="title"><h5>Categorias dos Leilões</h5><span id="action-add"><a href="categoria_adicionar.php" title="Adicionar" class="btn14 mr5"><img src="images/icons/dark/add.png" alt="adicionar" title="adicionar" /></a></span></div>
         
         <!-- Dynamic table -->
         <div class="table">
@@ -24,9 +24,10 @@
                     include_once ('includes/conexao.php');
 
                     $sql = " SELECT * FROM categorias ";
-                    $query = mysql_query($sql);
+                    $query = $pdo->query($sql);
+                    $query = $query->fetchAll(PDO::FETCH_ASSOC);
                     
-                    while ($resultset = mysql_fetch_array($query)):
+                    foreach ($query as $resultset){
                         $id = $resultset['id'];
                         ?>
                         <tr class="gradeA">
@@ -38,7 +39,7 @@
                             </td>
                         </tr>
                         <?php
-                    endwhile;
+                    }
                     ?>
                 </tbody>
             </table>

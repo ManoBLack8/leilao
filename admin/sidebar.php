@@ -7,7 +7,7 @@
         <li><a href="#" title="Gerenciar Leilões" <?php echo ($menuativo == "pacote.php" || $menuativo == "categoria.php" || $menuativo == "leilao.php" ) ? 'class="active exp"' : 'class="exp"' ?> ><span>Leilões</span></a>
             <ul class="sub">
                 <li><a href="pacote.php">Pacotes de Lances</a></li>
-                <!--<li><a href="categoria">Categorias dos Leilões</a></li>-->
+                <li><a href="categoria.php">Categorias dos Leilões</a></li>
                 <li class="last"><a href="leilao.php">Leilões</a></li>
             </ul>
         </li>
