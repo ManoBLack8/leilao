@@ -32,17 +32,30 @@ function getLances() {
             $lance_valor = 0;
             $lance_usuario = "---";
             $leilao_id = $leilao['id'];
-
+            // O BOT COMECA AQUI
             $duracao_escolher = rand(3, 6);
             if ($leilao['finalizado'] < 1) {
                 if ($leilao['duracao'] < $duracao_escolher) {
                     $id = $leilao['id'];
+                    $query_lances = "SELECT id_usuario FROM lances WHERE id_leilao = '$id' ORDER BY id DESC LIMIT 1";
+                    //echo $query_lances;
+                    $result_lances = $pdo->query($query_lances);
+                    $result_lances = $result_lances->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($result_lances as $laulau) {
+                        $usuarioa = $laulau['id_usuario'];
+                    }
+
+                    if ($usuarioa != '37') {
+                        $usu_bot = '37';
+                    }else {
+                        $usu_bot = '41';
+                    }
 
                     $q_leiloes = $pdo->query("SELECT SUM(valor_lance) FROM lances WHERE id_leilao = '$id' AND id_usuario != 37");
                     $q_leiloes = $q_leiloes->fetchAll(PDO::FETCH_ASSOC);
                     $q_leiloes[0]['SUM(valor_lance)'];
                     if ($q_leiloes[0]['SUM(valor_lance)'] < 1500) {
-                        $query = "INSERT INTO lances VALUES (NULL, " . $id . ", '37', '0.01', '" . $datetime_atual . "')";
+                        $query = "INSERT INTO lances VALUES (NULL, " . $id . ", '$usu_bot', '0.01', '" . $datetime_atual . "')";
                         $result = $pdo->query($query);
                         $query_up = "UPDATE leiloes SET duracao = '15' WHERE id = " . $id;
                         $result_up = $pdo->query($query_up);
