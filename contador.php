@@ -11,10 +11,17 @@ for ($i=0; $i < $num_leiloes; $i++) {
     $id = $result_leiloes[$i]['id'];
     $comeca_em = $result_leiloes[$i]['comeca_em'];
     $duracao = $result_leiloes[$i]['duracao'];
-    
+
+    $query_lances = "SELECT SUM(valor_lance) FROM lances WHERE id_leilao = '$id' AND  id_usuario != '37'";
+    $result_lances = $pdo->query($query_lances);
+    $result_lances = $result_lances->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($result_lances as $lances) {
+        $soma_valor = $lances['SUM(valor_lance)'];
+
+    }
     if ($comeca_em <= $datetime_atual) {
 
-        if ($duracao == 0) {
+        if ($duracao == 0 AND $soma_valor >= 1500.00) {
             $query_up = "UPDATE leiloes SET arrematado_em = '" . $datetime_atual . "', finalizado = 1 WHERE id = " . $id;
             $result_up = $pdo->query($query_up);
     
