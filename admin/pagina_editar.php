@@ -1,4 +1,19 @@
-<?php include_once 'header.php'; ?>
+<?php include_once 'header.php';
+include('includes/conexao.php');
+$id = $_REQUEST['id'];
+
+$query = "SELECT * FROM paginas WHERE id = " . $id;
+$result = $pdo->query($query);
+$result = $result->fetchAll(PDO::FETCH_ASSOC);
+$admin = count($result);
+
+foreach ($result as $admin) {
+    $titulo = $admin['titulo'];
+    $slug = $admin['slug'];
+    $conteudo = $admin['conteudo'];
+    $status = $admin['status'];
+}
+?>
 
 <!-- Content wrapper -->
 <div class="wrapper">
@@ -19,7 +34,7 @@
                     <div class="rowElem noborder">
                         <label>Título:</label>
                         <div class="formRight">
-                            <input type="text" class="validate[required]" name="titulo" id="titulo" value="<?php echo utf8_encode($_SESSION['titulo_edit']) ?>"/>
+                            <input type="text" class="validate[required]" name="titulo" id="titulo" value="<?php echo utf8_encode($titulo) ?>"/>
                         </div>
                         <div class="fix"></div>
                     </div>
@@ -27,22 +42,22 @@
                     <div class="rowElem noborder">
                         <label>Slug:</label>
                         <div class="formRight">
-                            <input type="text" name="slug" id="slug" value="<?php echo $_SESSION['slug_edit'] ?>"/>
+                            <input type="text" name="slug" id="slug" value="<?php echo $slug ?>"/>
                         </div>
                         <div class="fix"></div>
                     </div>
 
                     <div class="rowElem noborder">
                         <label>Conteúdo:</label>
-                        <textarea class="wysiwyg" rows="5" cols="" name="conteudo"><?php echo utf8_encode($_SESSION['conteudo_edit']) ?></textarea>
+                        <textarea class="wysiwyg" rows="5" cols="" name="conteudo"><?php echo utf8_encode($conteudo) ?></textarea>
                     </div>
 
                     <div class="rowElem noborder">
                         <label>Status:</label>
                         <div class="formRight">                        
                             <select name="status">
-                                <option value="1" <?php echo ($_SESSION['status_edit']) ? 'selected = selected' : ''; ?>>Ativo</option>
-                                <option value="0" <?php echo (!$_SESSION['status_edit']) ? 'selected = selected' : ''; ?>>Inativo</option>
+                                <option value="1" <?php echo ($status) ? 'selected = selected' : ''; ?>>Ativo</option>
+                                <option value="0" <?php echo (!$status) ? 'selected = selected' : ''; ?>>Inativo</option>
                             </select>
                         </div>
                         <div class="fix"></div>

@@ -18,7 +18,7 @@
                         <th>Login</th>
                         <th>E-mail</th>
                         <th>Telefone</th>
-                        <th>Último Login</th>
+                        <th>nº lances</th>
                         <th>Status</th>
                         <th class="lastCol">Ações</th>
                     </tr>
@@ -27,7 +27,7 @@
                 	<?php
                     include_once ('includes/conexao.php');
 
-                    $sql = " SELECT id, login, nome, email, telefone, DATE_FORMAT(ultimo_login, '%d/%m/%Y %T') AS ultimo_login, status FROM usuarios ";
+                    $sql = " SELECT id, login, num_lances, nome, email, telefone, DATE_FORMAT(ultimo_login, '%d/%m/%Y %T') AS ultimo_login, status FROM usuarios ";
                     $query = $pdo->query($sql);
                     $query = $query->fetchAll(PDO::FETCH_ASSOC);
                     
@@ -38,7 +38,7 @@
                             <td><?php echo $resultset['login']; ?></td>
                             <td><?php echo $resultset['email']; ?></td>
                             <td><?php echo $resultset['telefone']; ?></td>
-                            <td><?php echo $resultset['ultimo_login']; ?></td>
+                            <td><?php echo $resultset['num_lances']; ?></td>
                             <td><?php echo ($resultset['status'] == 1) ? 'Ativo' : 'Inativo'; ?></td>
                             <td class="center">
                                 <a href="#" class="sepV_a" title="Editar"><img src="images/icons/dark/pencil.png" alt="" /></a>

@@ -22,8 +22,8 @@
         </li>
         <li><a href="#" title="Gerenciar Conteúdos" <?php echo ($menuativo == "pagina.php" || $menuativo == "banner.php" || $menuativo == "noticia.php" || $menuativo == "menu.php" ) ? 'class="active exp"' : 'class="exp"' ?> ><span>Conteúdo</span></a>
             <ul class="sub">
-                <!--<li><a href="pagina.php">Páginas</a></li>
-                <li><a href="noticia.php">Notícias</a></li>-->
+                <li><a href="pagina.php">Páginas</a></li>
+                <!--<li><a href="noticia.php">Notícias</a></li>-->
                 <li><a href="banner.php">Banners</a></li>
                 <li><a href="parceiros.php">Parceiros</a></li>
                 <li class="last"><a href="menu">Menu</a></li>

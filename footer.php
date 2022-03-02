@@ -1,11 +1,12 @@
-        <div class="parceiros">
+<div class="rodape" style="display: flex;flex-direction: column;">
+        <div class="parceiros" style="flex-direction: row; width:100%;">
             <ul>
                 <li><a href="#"><img src="img/pagseguro.png" alt="PagSeguro" title="PagSeguro" /></a></li>
                 
             </ul>
         </div>
         <h1>Parceiros:</h1>
-        <div class="fornecedores">
+        <div class="fornecedores" style="flex-direction: row;">
             <ul>
                 <?php 
                     $q_parceiros = $pdo->query("SELECT * FROM parceiros WHERE status = 1 ORDER BY ordem ASC");
@@ -17,41 +18,21 @@
             </ul>
         </div>                
 
-        <div class="rodape">
+        <div class="rodape" style="flex-direction: row; margin-top: 50px;">
             <div class="logo-rodape">
-                <a href="index"><img src="" alt="" /></a>
+                <a href="index"><img src="img/logo.png" alt="" /></a>
             </div>
 
-            <div class="menu-rodape">
+            <div class="menu-rodape" style="margin-top: 50px;">
                 <ul>
-                    <li class="tit">Leilões</li>
-                    <li><a href="#">Próximos leilões</a></li>
-                    <li><a href="#">Últimos leilões</a></li>
-                </ul>
-                <ul>
-                    <li class="tit">Como funciona?</li>
-                    <li><a href="#">Passo-a-passo</a></li>
-                    <li><a href="#">Perguntas frequêntes</a></li>
-                    <li><a href="#">Minha conta</a></li>
-                    <li><a href="#">Dicas</a></li>	
-                </ul>
-                <ul>
-                    <li class="tit">Posso confiar?</li>
-                    <li><a href="#">Auditoria</a></li>
-                    <li><a href="#">Pagseguro</a></li>
-                    <li><a href="#">Depoimentos</a></li>	
-                </ul>
-                <ul>
-                    <li class="tit">Sobre</li>
-                    <li><a href="#">Termos de uso</a></li>
-                    <li><a href="#">Quem somos</a></li>
-                    <li><a href="#">Redes sociais</a></li>
-                    <li><a href="#">Mapa do site</a></li>	
-                </ul>
-                <ul>
-                    <li class="tit">Fornecedores</li>
-                    <li><a href="#">Americanas.com</a></li>
-                    <li><a href="#">Submarino</a></li>	
+                    <?php $q_paginas = $pdo->query("SELECT * FROM paginas ");
+                    $q_paginas = $q_paginas->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($q_paginas as $paginas) { ?>
+                    <li>
+                        <a href="paginas.php?pag=<?= $paginas['slug'] ?>"><?= $paginas["titulo"]?></a>
+                        
+                    </li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>
@@ -61,6 +42,8 @@
         <div class="copyright">
             <p><b>Leilão Duarte</b> - Todos os direitos reservados</p>
         </div>
+</div>
+    
         <!-- jquery e script's -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script type="text/javascript">
