@@ -17,6 +17,7 @@
                         <th>id do usuario</th>
                         <th>codigo</th>
                         <th>data</th>
+                        <th>promotor</th>
                         <th>status</th>
                     </tr>
                 </thead>
@@ -24,17 +25,18 @@
                 	<?php
                     include_once ('includes/conexao.php');
 
-                    $sql = " SELECT * FROM compras ";
+                    $sql = " SELECT *, compras.status as status FROM compras LEFT JOIN promotores ON (promotores.id = compras.promotor_id)";
                     $query = $pdo->query($sql);
                     $query = $query->fetchAll(PDO::FETCH_ASSOC);
                     
                     foreach ($query as $resultset) {
                         ?>
                         <tr class="gradeA">
-                            <td><?php echo $resultset['id_usuario']; ?></td>
-                            <td><?php echo $resultset['transacao']; ?></td>
-                            <td><?php echo $resultset['data_envio']; ?></td>
-                            <td><?php echo $resultset['status']; ?></td>
+                            <td><?= $resultset['id_usuario']; ?></td>
+                            <td><?= $resultset['transacao']; ?></td>
+                            <td><?= $resultset['data_envio']; ?></td>
+                            <td><?= $resultset['nome']; ?></td>
+                            <td><?= $resultset['status']; ?></td>
                         </tr>
                         <?php
                     }

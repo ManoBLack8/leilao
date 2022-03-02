@@ -51,6 +51,28 @@ if (!$xml->error) {
         
             }
         }
+    } else {
+        $query = "UPDATE compras SET id_usuario = '$id_usuarios', id_pacote = '$id_pacote', data_envio = '$data_envio', refe = '$refe', promotor_id = '$id_promotor', status = '$status' WHERE transacao = '$code'";
+        $result = $pdo->query($query);
+        if ($refe == "leilao") {
+            $queryy = "SELECT num_lances FROM pacotes WHERE id = '$id_pacote'";
+            $num_pacote = $pdo->query($queryy);
+            $num_pacote = $num_pacote->fetchAll(PDO::FETCH_ASSOC);
+            $num_pacotee = $num_pacote[0];
+            $lances_do_pacote = $num_pacotee["num_lances"];
+
+            $query = "SELECT num_lances FROM usuarios WHERE id = ". $id_usuarios ."";
+            $num_lances = $pdo->query($query);
+            $num_lances = $num_lances->fetchAll(PDO::FETCH_ASSOC);
+            
+            foreach ($num_lances as $nlances) {
+                $perdeu_lance = $nlances['num_lances'] + $lances_do_pacote;
+                $query = "UPDATE usuarios SET num_lances = $perdeu_lance WHERE id = $id_usuarios";
+                $result = $pdo->query($query);
+                $_SESSION['num_lances_usuario'] = $perdeu_lance;
+        
+            }
+        }
     }
 }
 header('location: index.php');
