@@ -27,7 +27,7 @@
                 	<?php
                     include_once ('includes/conexao.php');
 
-                    $sql = " SELECT id, login, num_lances, nome, email, telefone, DATE_FORMAT(ultimo_login, '%d/%m/%Y %T') AS ultimo_login, status FROM usuarios ";
+                    $sql = " SELECT id, login, num_lances, nome, email, telefone, DATE_FORMAT(ultimo_login, '%d/%m/%Y %T') AS ultimo_login, status FROM usuarios WHERE status > 0 ";
                     $query = $pdo->query($sql);
                     $query = $query->fetchAll(PDO::FETCH_ASSOC);
                     
@@ -41,9 +41,8 @@
                             <td><?php echo $resultset['num_lances']; ?></td>
                             <td><?php echo ($resultset['status'] == 1) ? 'Ativo' : 'Inativo'; ?></td>
                             <td class="center">
-                                <a href="#" class="sepV_a" title="Editar"><img src="images/icons/dark/pencil.png" alt="" /></a>
-                                <a href="#" class="sepV_a" title="Visualizar"><img src="images/icons/dark/preview.png" alt="" /></a>
-                                <a href="#" title="Deletar"><img src="images/icons/dark/trash.png" alt="" class="lastImg" /></a>
+                                <a href="actions/usuarioAction.php?action=sch_id&id=<?= $resultset['id'] ?>" class="sepV_a" title="Editar"><img src="images/icons/dark/pencil.png" alt="" /></a>
+                                <a href="actions/usuarioAction.php?action=del&id=<?= $resultset['id'] ?>" title="Deletar"><img src="images/icons/dark/trash.png" alt="" class="lastImg" /></a>
                             </td>
                         </tr>
                         <?php
