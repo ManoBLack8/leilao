@@ -53,7 +53,9 @@ function getLances() {
 
                     $q_leiloes = $pdo->query("SELECT SUM(valor_lance) FROM lances WHERE id_leilao = '$id' AND id_usuario != 37");
                     $q_leiloes = $q_leiloes->fetchAll(PDO::FETCH_ASSOC);
+
                     $q_leiloes[0]['SUM(valor_lance)'];
+
                     if ($q_leiloes[0]['SUM(valor_lance)'] < 1500) {
                         $query = "INSERT INTO lances VALUES (NULL, " . $id . ", '$usu_bot', '0.01', '" . $datetime_atual . "')";
                         $result = $pdo->query($query);
