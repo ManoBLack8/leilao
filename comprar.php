@@ -1,8 +1,10 @@
 <?php require_once('header.php');
 @session_start();
-if (!$_SESSION['id_usuario']) {
-    header('location: index.php');
-}
+if(@$_SESSION['id_usuario'] == null || @$_SESSION['id_usuario'] > 0){
+    echo "<script language='javascript'> alert('é preciso ter login') </script>";
+    echo "<script language='javascript'> window.location='index.php' </script>";
+     
+ }
 $query = $pdo->query("SELECT * FROM pacotes");
 $query = $query->fetchAll(PDO::FETCH_ASSOC);
 $peso = 1;
