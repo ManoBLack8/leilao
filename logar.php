@@ -16,7 +16,7 @@ if (!empty($acao)) {
             $usuario = $_POST["login"];
             $senha = $_POST["password"];
 
-            $sql = " SELECT * FROM usuarios WHERE login = '$usuario' and senha = '$senha'";
+            $sql = " SELECT * FROM usuarios WHERE login = '$usuario' and senha = '$senha' AND status = 1";
 
             $query = $pdo->query($sql);
             $resultset = $query->fetchAll(PDO::FETCH_ASSOC);
