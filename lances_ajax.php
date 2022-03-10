@@ -44,18 +44,23 @@ function getLances() {
                     foreach ($result_lances as $laulau) {
                         $usuarioa = $laulau['id_usuario'];
                     }
+                    function definirbot($usuarioa){
+                        $input = array(37, 41, 73, 74, 75, 76, 77, 78);
+                        $rand_keys = array_rand($input);
+                        $usuariodefi = $input[$rand_keys];
+                        if ($usuarioa == $usuariodefi OR $usuariodefi == 0) {
+                            definirbot($usuarioa);
+                        }else {
+                            $usu_bot = $usuariodefi;
+                            return $usu_bot;
+                        }
 
-                    if ($usuarioa != '37') {
-                        $usu_bot = '37';
-                    }else {
-                        $usu_bot = '41';
                     }
-
+                    $usu_bot = definirbot($usuarioa);
+                    
                     $q_leiloes = $pdo->query("SELECT SUM(valor_lance) FROM lances WHERE id_leilao = '$id' AND id_usuario != 37");
                     $q_leiloes = $q_leiloes->fetchAll(PDO::FETCH_ASSOC);
-
                     $q_leiloes[0]['SUM(valor_lance)'];
-
                     if ($q_leiloes[0]['SUM(valor_lance)'] < 1500) {
                         $query = "INSERT INTO lances VALUES (NULL, " . $id . ", '$usu_bot', '0.01', '" . $datetime_atual . "')";
                         $result = $pdo->query($query);
