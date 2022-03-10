@@ -146,7 +146,7 @@
     ?>
 </div>
 
-<div class="ultimos-ganhadores">
+<!-- <div class="ultimos-ganhadores">
     <div class="tit-home">
         <h2>Confira os últimos ganhadores!</h2>
     </div>
@@ -268,5 +268,5 @@
         <li class="num"><a href="#">3</a></li>
         <li class="bt-grande"><a href="#">Próximo</a></li>
     </ul>
-</div>
+</div> -->
 <?php include('footer.php'); ?>
