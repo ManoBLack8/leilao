@@ -1,5 +1,7 @@
 <?php require_once('header.php');
 @session_start();
+$query = $pdo->query("SELECT * FROM depoimentos");
+$query = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <style>
 .produtinho{
@@ -19,6 +21,10 @@
     font-weight: 600;
     color: #fff;
 }
+
+.produtinho h3{
+    color: #fff;
+}
 .produto_texto{
     font-size: 24px;
     color: #343434;
@@ -32,6 +38,8 @@
             <video controls src="admin/uploads/depoimentos/videos/<?= $pacote['depoimento'] ?>"></video>
             <hr>
             <h1><?= $pacote['titulo'] ?></h1>
+            <hr>
+            <h3><?= $pacote['data_depoimento'] ?></h3>
         </div>
     <?php } ?>
 
