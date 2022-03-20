@@ -31,7 +31,7 @@
         </li>
         <li><a href="#" title="" class="exp"><span>Relatórios</span></a>
             <ul class="sub">
-                <li class="last"><a href="relatorio">Relatórios</a></li>
+                <!--<li class="last"><a href="relatorio">Relatórios</a></li>-->
                 <li class="last"><a href="vendas.php">Vendas</a></li>
 
             </ul>

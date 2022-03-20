@@ -8,9 +8,9 @@ $acao = $_REQUEST['action'];
 
 switch ($acao) {
     case 'add':
-        $titulo = utf8_decode($_POST['titulo']);
+        $titulo = $_POST['titulo'];
         $slug = ($_POST['slug'] == "") ? create_slug($_POST['titulo']) : $_POST['slug'];
-        $conteudo = utf8_decode($_POST['conteudo']);
+        $conteudo = $_POST['conteudo'];
         $status = $_POST['status'];
 
         $query = "INSERT INTO paginas VALUES (NULL, '" . $titulo . "', '" . $slug . "', '" . $conteudo . "', " . $status . ")";
@@ -59,14 +59,13 @@ switch ($acao) {
 
         $query = "UPDATE paginas SET titulo = '$titulo', slug = '$slug', conteudo = '$conteudo', status = '$status' WHERE id = $id";
         $result = $pdo->query($query);
-        echo "oi";
 
         $query = "SELECT id FROM paginas WHERE titulo = '" . $titulo . "' AND slug = '" . $slug . "' AND conteudo = '" . $conteudo . "' AND status = " . $status;
         $result = $pdo->query($query);
         $result = $result->fetchAll(PDO::FETCH_ASSOC);
         $num_result = count($result);
 
-       
+        header('location: ../pagina.php');
         
 
         break;
