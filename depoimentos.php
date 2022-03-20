@@ -35,11 +35,10 @@ $query = $query->fetchAll(PDO::FETCH_ASSOC);
         
      ?>
         <div class="produtinho">
-            <video controls src="admin/uploads/depoimentos/videos/<?= $pacote['depoimento'] ?>"></video>
+            <video controls src="admin/uploads/depoimentos/videos/<?= $pacote['depoimento'] ?>" style="max-width: 250px;"></video>
             <hr>
             <h1><?= $pacote['titulo'] ?></h1>
             <hr>
-            <h3><?= $pacote['data_depoimento'] ?></h3>
         </div>
     <?php } ?>
 

@@ -11,30 +11,30 @@
         <!-- Statistics -->
         <div class="stats">
         	<ul>
-            	<li><a href="#" class="count grey" title="">52</a><span>new pending tasks</span></li>
+            	<li><a href="#" class="count grey" title="">???</a><span>new pending tasks</span></li>
                 
-                <li><a href="#" class="count grey" title="">520</a><span>pending orders</span></li>
-                <li><a href="#" class="count grey" title="">14</a><span>new opened tickets</span></li>
-                <li class="last"><a href="#" class="count grey" title="">48</a><span>new user registrations</span></li>
+                <li><a href="#" class="count grey" title="">???</a><span>pending orders</span></li>
+                <li><a href="#" class="count grey" title="">???</a><span>new opened tickets</span></li>
+                <li class="last"><a href="#" class="count grey" title="">???</a><span>new user registrations</span></li>
             </ul>
             <div class="fix"></div>
         </div>
                 
-        <!-- Charts -->
+        <!-- Charts
         <div class="widget first">
             <div class="head"><h5 class="iGraph">Charts</h5></div>
             <div class="body">
                 <div class="chart" style="width: 700px; height: 200px;"></div>
             </div>
-        </div>
+        </div>-->
         
-        <!-- Calendar -->
+        <!-- Calendar 
         <div class="widget">
         	<div class="head"><h5 class="iDayCalendar">Schedule</h5></div>
             <div id="calendar"></div>
-        </div>
+        </div>-->
         
-        <!-- Full width tabs --> 
+        <!-- Full width tabs 
         <div class="widget">      
             <ul class="tabs">
                 <li><a href="#tab3">Tab Active</a></li>
@@ -49,9 +49,9 @@
                 <div id="tab4" class="tab_content">This tab is active now</div>
             </div>	
             <div class="fix"></div>	 
-        </div>
+        </div>--> 
         
-        <!-- Dynamic table -->
+        <!-- Dynamic table 
         <div class="table">
             <div class="head"><h5 class="iFrames">Dynamic table</h5></div>
             <table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
@@ -470,14 +470,14 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div>-->
         
         
-        <!-- Widgets -->
+        <!-- Widgets 
         <div class="widgets">
             <div class="left">
             
-                <!-- Search -->
+                
                 <div class="searchWidget">
                 	<form action="">
                     	<input type="text" name="search" placeholder="Enter search text..." />
@@ -485,7 +485,7 @@
                     </form>
                 </div>
                 
-                <!-- Statistics -->
+                
                 <div class="widget">
                     <div class="head"><h5 class="iChart8">Website statistic</h5><div class="num"><a href="#" class="blueNum">+245</a></div></div>
                     <table cellpadding="0" cellspacing="0" width="100%" class="tableStatic">
@@ -526,7 +526,7 @@
                     </table>                    
                 </div>
             	
-                <!-- Latest orders -->
+                
                 <div class="widget">
                     <div class="head"><h5 class="iMoney">Latest orders</h5><div class="num"><a href="#" class="blueNum">+245</a></div></div>
                     
@@ -601,10 +601,10 @@
             </div>
             
             
-            <!-- Right widgets -->
+            
             <div class="right">
             	
-                <!-- Support tickets widget -->
+                
                 <div class="widget">
                     <div class="head"><h5 class="iHelp">Support ticket widget</h5><div class="num"><a href="#" class="redNum">+128</a></div></div>
                     
@@ -675,7 +675,7 @@
                     </div>                    
                 </div>
                 
-                <!-- Tabs widget -->
+                
                 <div class="widget">       
                     <ul class="tabs">
                         <li><a href="#tab1">Tab 1</a></li>
@@ -689,7 +689,7 @@
                     <div class="fix"></div>		 
                 </div>
                 
-                <!-- User widget -->
+
                 <div class="widget">
                     <div class="head">
                         <div class="userWidget">
@@ -728,7 +728,7 @@
                                        
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
     <div class="fix"></div>
 </div>

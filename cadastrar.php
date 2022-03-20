@@ -111,7 +111,8 @@
                         <label for="">Confirmação de Senha</label><br>
                         <input type="text" name="cosenha">
                     </div>
-                </div>
+                </div><br>
+                    <input id="pol" type="checkbox"><label for="pol"> Concordo com as</label><a href="paginas.php?pag=politicas-de-privacidade" target="_blank" rel="noopener noreferrer"> Política Privacidade</a>
             </div>
             <button type="submit" class="btn btn-success">Cadastrar-se</button>
         </form>

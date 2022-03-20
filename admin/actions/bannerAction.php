@@ -47,66 +47,23 @@ switch ($acao) {
         } else{
             $_SESSION['msg_error'] = 'Erro ao cadastrar o banner!';
 
-            header('location: ../banner');
+            header('location: ../banner.php');
         }
 
         break;
 
     case 'del':
         $id = $_REQUEST['id'];
-        $dir = '../uploads/banner/img/';
-        $dir_thumb = '../uploads/banner/thumb/';
-        
-        $query = "SELECT * FROM banners WHERE id = " . $id;
-        $result = mysql_query($query);
-        $num_result = mysql_num_rows($result);
-        
-        if ($num_result > 0) {
-            $banner = mysql_fetch_assoc($result);
-            $img_src = $banner['img_src'];
-            
-            unlink($dir . $img_src);
-            unlink($dir_thumb . $img_src);
-        }
-        
-        $query = "DELETE FROM banners WHERE id = " . $id;
-        $result = mysql_query($query);
+        $query = "DELETE FROM banners WHERE id = '$id' ";
+        $result = $pdo->query($query);
 
-        $query = "SELECT * FROM banners WHERE id = " . $id;
-        $result = mysql_query($query);
-        $num_result = mysql_num_rows($result);
-
-        if ($num_result > 0) {
-            $_SESSION['msg_error'] = 'Erro ao excluir o banner!';
-
-            header('location: ../banner');
-        } else {
-            $_SESSION['msg_success'] = 'Banner excluído com sucesso!';
-
-            header('location: ../banner');
-        }
+        header('location: ../banner.php');
 
         break;
 
     case 'sch_id':
         $id = $_REQUEST['id'];
-
-        $query = "SELECT * FROM banners WHERE id = " . $id;
-        $result = mysql_query($query);
-        $banner = mysql_fetch_assoc($result);
-
-        $titulo = $banner['titulo'];
-        $img_src = $banner['img_src'];
-        $ordem = $banner['ordem'];
-        $status = $banner['status'];
-
-        $_SESSION['id_edit'] = $id;
-        $_SESSION['titulo_edit'] = $titulo;
-        $_SESSION['img_src_edit'] = $img_src;
-        $_SESSION['ordem_edit'] = $ordem;
-        $_SESSION['status_edit'] = $status;
-
-        header("location: ../banner_editar.php");
+        header("location: ../banner_editar.php?id='$id'");
 
         break;
 
@@ -129,7 +86,7 @@ switch ($acao) {
             $src_imagem = $cod.".".$ext_imagem;
             
             $query = "UPDATE banners SET titulo = '" . $titulo . "', img_src = '" . $src_imagem . "', ordem = '" . $ordem . "', status = " . $status . " WHERE id = " . $id;
-            $result = mysql_query($query);
+            $result = $pdo->query($query);
             
             $image = new SimpleImage();
             $image_thumb = new SimpleImage();
@@ -154,23 +111,10 @@ switch ($acao) {
             unlink($dir_thumb . $img_antiga);
         } else{
             $query = "UPDATE banners SET titulo = '" . $titulo . "', ordem = '" . $ordem . "', status = " . $status . " WHERE id = " . $id;
-            $result = mysql_query($query);
+            $result = $pdo->query($query);
         }
 
-        $query = "SELECT id FROM banners WHERE titulo = '" . $titulo . "' AND ordem = '" . $ordem . "' AND status = " . $status;
-        $result = mysql_query($query);
-        $num_result = mysql_num_rows($result);
-
-        if ($num_result > 0) {
-            $_SESSION['msg_success'] = 'Banner editado com sucesso!';
-
-            header('location: ../banner');
-        } else {
-            $_SESSION['msg_error'] = 'Erro ao editar o banner!';
-
-            header('location: ../banner');
-        }
-
+        header('location: ../banner.php');
         break;
 
     case 'atv':

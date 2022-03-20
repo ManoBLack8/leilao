@@ -20,7 +20,7 @@
 
         <div class="rodape" style="flex-direction: row; margin-top: 50px;">
             <div class="logo-rodape">
-                <a href="index"><img src="img/logo.png" alt="" /></a>
+                <a href="index"><img src="img/logo.png" alt="" style="width: 100%;" /></a>
             </div>
 
             <div class="menu-rodape" style="margin-top: 50px;">

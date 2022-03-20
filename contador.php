@@ -21,7 +21,7 @@ for ($i=0; $i < $num_leiloes; $i++) {
     }
     if ($comeca_em <= $datetime_atual) {
 
-        if ($duracao == 0 AND $soma_valor >= 1500.00) {
+        if ($duracao <= 0) {
             $query_up = "UPDATE leiloes SET arrematado_em = '" . $datetime_atual . "', finalizado = 1 WHERE id = " . $id;
             $result_up = $pdo->query($query_up);
     
