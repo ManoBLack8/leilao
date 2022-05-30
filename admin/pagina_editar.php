@@ -49,7 +49,7 @@ foreach ($result as $admin) {
 
                     <div class="rowElem noborder">
                         <label>Conteúdo:</label>
-                        <textarea class="wysiwyg" rows="5" cols="" name="conteudo"><?php echo utf8_encode($conteudo) ?></textarea>
+                        <textarea class="wysiwyg" rows="5" cols="" name="conteudo"><?php echo $conteudo ?></textarea>
                     </div>
 
                     <div class="rowElem noborder">

@@ -1,4 +1,17 @@
-<?php include_once 'header.php'; ?>
+<?php include_once 'header.php';
+include('includes/conexao.php');
+$id = $_REQUEST['id'];
+$query = "SELECT * FROM banners WHERE id = " . $id;
+$result = $pdo->query($query);
+$result = $result->fetchAll(PDO::FETCH_ASSOC);
+$admin = count($result);
+
+foreach ($result as $banner) {
+    $titulo = $banner['titulo'];
+    $ordem = $banner['ordem'];
+    $status = $banner['status'];
+}
+?>
 
 <!-- Content wrapper -->
 <div class="wrapper">
@@ -9,48 +22,48 @@
         <div class="title"><h5>Editar Administrador</h5></div>
 
         <!-- Form begins -->
-        <form action="actions/administradorAction.php" method="post" id="valid" class="mainForm">
+        <form action="actions/bannerAction.php" method="post" id="valid" class="mainForm">
             <!-- Input text fields -->
             <input type="hidden" name="action" value="edt" />
-            <input type="hidden" name="id" value="<?php echo $_SESSION['id_edit']?>"/>
+            <input type="hidden" name="id" value="<?php echo $id ?>"/>
             <fieldset>
                 <div class="widget">
-                    <div class="head"><h5 class="iList">Administrador</h5></div>
+                    <div class="head"><h5 class="iList">Banner</h5></div>
                     <div class="rowElem noborder">
-                        <label>Nome:</label>
+                        <label>Título:</label>
                         <div class="formRight">
-                            <input type="text" class="validate[required]" name="nome" id="nome" value="<?php echo utf8_encode($_SESSION['nome_edit']) ?>"/>
+                            <input type="text" class="validate[required]" name="titulo" id="titulo" value="<?= $titulo ?>"/>
                         </div>
                         <div class="fix"></div>
                     </div>
-
+                    
                     <div class="rowElem noborder">
-                        <label>Login:</label>
+                        <label>Imagem:</label>
                         <div class="formRight">
-                            <input type="text" class="validate[required]" name="login" id="login" value="<?php echo $_SESSION['login_edit'] ?>"/>
+                            <input type="file" id="banner" name="banner[]" />
                         </div>
                         <div class="fix"></div>
                     </div>
-
+                    
                     <div class="rowElem noborder">
-                        <label>Senha:</label>
+                        <label>Ordem:</label>
                         <div class="formRight">
-                            <input type="password" class="validate[required]" name="senha" id="senha" value="<?php echo $_SESSION['senha_edit'] ?>"/>
+                            <input type="text" class="validate[required,custom[onlyNumberSp]]" name="ordem" id="ordem" value="<?= $ordem ?>"/>
                         </div>
                         <div class="fix"></div>
                     </div>
-
+                    
                     <div class="rowElem noborder">
                         <label>Status:</label>
-                        <div class="formRight">                        
+                        <div class="formRight">
                             <select name="status">
-                                <option value="1" <?php echo ($_SESSION['status_edit']) ? 'selected = selected' : ''; ?>>Ativo</option>
-                                <option value="0" <?php echo (!$_SESSION['status_edit']) ? 'selected = selected' : ''; ?>>Inativo</option>
+                                <option value="1" <?php echo ($status) ? 'selected = selected' : ''; ?>>Ativo</option>
+                                <option value="0" <?php echo (!$status) ? 'selected = selected' : ''; ?>>Inativo</option>
                             </select>
                         </div>
                         <div class="fix"></div>
                     </div>
-
+                    
                     <input type="submit" value="Cadastrar" class="greyishBtn submitForm" />
                     <div class="fix"></div>
                 </div>

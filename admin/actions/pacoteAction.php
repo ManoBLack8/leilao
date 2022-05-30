@@ -56,20 +56,8 @@ switch ($acao) {
         $query = "DELETE FROM pacotes WHERE id = " . $id;
         $result = $pdo->query($query);
 
-        $query = "SELECT * FROM pacotes WHERE id = " . $id;
-        $result = $pdo->query($query);
-        $result = $result->fetchAll(PDO::FETCH_ASSOC);
-        $num_result = count($result);
-
-        if ($num_result > 0) {
-            $_SESSION['msg_error'] = 'Erro ao excluir o pacote de lance!';
-
-            header('location: ../pacote');
-        } else {
-            $_SESSION['msg_success'] = 'Pacote de lance excluído com sucesso!';
-
-            header('location: ../pacote');
-        }
+        header('location: ../pacote.php');
+        
 
         break;
 
