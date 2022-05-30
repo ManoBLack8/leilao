@@ -10925,3 +10925,18 @@ i, .tab-content .tab-pane.active, .scroll-to-top i, .quantity .cart-plus-minus >
 	-webkit-transition: all .3s ease-out;
 	transition: all .3s ease-out;
 }
+
+.box-lance .ExtSubInf2 {
+	font-family: roboto-medium;
+	color: #1d3863;
+	text-transform: uppercase;
+	font-size: 15px;
+	font-weight: 400;
+	display: block;
+	margin-bottom: 5px;
+	overflow: hidden;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	vertical-align: middle;
+}
