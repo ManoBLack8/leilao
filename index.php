@@ -1,5 +1,31 @@
 <?php include('header.php');?>
-
+<style>
+    ExtSubInf1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.ExtSubInf1 div {
+	display: inline-block;
+	border: 0;
+	background: #e6e6e6;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	font-family: roboto-medium;
+	text-transform: uppercase;
+	font-size: 35px;
+	font-weight: 400;
+	color: #172e57;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+	margin-right: 6px;
+}
+</style>
 <div class="banners">
     <!-- slideshow images -->
     <div class="fullbanner">  
@@ -36,7 +62,7 @@
 
     
     //AND comeca_em >= '$datetime_atual'
-    $query_leiloes = "SELECT *,leiloes.id AS id, DATE_FORMAT(comeca_em, '%d/%m/%Y') AS data_inicio, DATE_FORMAT(comeca_em, '%T') AS hora_inicio FROM leiloes LEFT OUTER JOIN imagens ON imagens.id_leilao = leiloes.id  WHERE leiloes.status = 1 ORDER BY comeca_em ASC ";
+    $query_leiloes = "SELECT *,leiloes.id AS id, DATE_FORMAT(comeca_em, '%d/%m/%Y') AS data_inicio, DATE_FORMAT(comeca_em, '%T') AS hora_inicio FROM leiloes LEFT OUTER JOIN imagens ON imagens.id_leilao = leiloes.id ORDER BY comeca_em ASC ";
     $result_leiloes = $pdo->query($query_leiloes);
     $res = $result_leiloes->fetchAll(PDO::FETCH_ASSOC);
     $num_leiloes = count($res);
@@ -90,16 +116,31 @@
                 </a>	
 
                 <div class="valor-prod">
-                    <span id="valor_<?= $leilao['id'] ?>">R$ <?= $leilao['valor_item'] ?></span>
+                    <span id="L_UltimoValor_<?= $leilao['id'] ?>">R$ <?= $leilao['valor_item'] ?></span>
                     <!--<p>95% de economia</p>-->
                 </div>
+                <input class="LeilaoOnline" type="hidden" value="<?= $leilao['id'] ?>">
+                <input id="LeilaoOnline_Info_<?= $leilao['id'] ?>" type="hidden" value="">
+                <input id="LeilaoOnline_Config_<?= $leilao['id'] ?>" type="hidden" value="N">
 
                 <div class="box-lance" id="box_lance_<?= $leilao['id'] ?>">
-                    <div class="box-contador contador-verde" id="cont_<?= $leilao['id'] ?>"><?= $leilao['duracao'] ?></div>
-                    <div class="lance-usuario">
-                        <!--<a href="#">--><button type="button" class="button_submit" value="<?= $leilao['id'] ?>" style="width: 120px; height:50px; border-radius:20px; font-size:24px; background:#82C305; color:#fff;">Lance</button><!--</a>-->
-                        <p id="usuario_<?= $leilao['id'] ?>" class="usuario_lance"><?= $lance_usuario; ?></p>
+                <div class="ExtSubInf1">
+                    <div id="L_ContDown_1_<?= $leilao['id'] ?>">-</div>
+                    <div id="L_ContDown_2_<?= $leilao['id'] ?>">-</div>
+		        </div>
+                <div class="ExtSubInf2" id="L_UltimoLogin_<?= $leilao['id'] ?>">
+
+                </div>
+                
+                <div class="ExtSuBtn" id="L_Botao_Box_<?= $leilao['id'] ?>">
+			        <div id="L_BotaoA_<?= $leilao['id'] ?>">
+                    	<a href="javascript:;" onclick="ExecutarLance('<?= $leilao['id'] ?>');" title="ExecutarLance" class="btn btn-custom3">LANCE</a>
                     </div>
+                    <div id="L_BotaoB_<?= $leilao['id'] ?>" class="hidde" style="display: none;">
+                        <a href="javascript:;" title="Lance sendo Executado" class="btn btn-custom3"><i class="fa fa-spinner fa-spin"></i></a>
+                    </div>
+                </div>
+                <div class="ExtSuBtn ExtSuBtnF" style="display: none;" id="L_Botao_BoxF_<?= $leilao['id'] ?>">Arrematado!</div>
                 </div>
             </div>
             <?php
@@ -123,7 +164,7 @@
     </div>
     
     <?php
-    $query_leiloes_dest = "SELECT titulo, slug, img_src, DATE_FORMAT(comeca_em, '%d/%m') AS data_inicio, DATE_FORMAT(comeca_em, '%T') AS hora_inicio FROM leiloes WHERE status = 1 AND finalizado = 0 AND destaque = 1 ORDER BY comeca_em ASC LIMIT 0, 7";
+    $query_leiloes_dest = "SELECT titulo, slug, img_src, DATE_FORMAT(comeca_em, '%d/%m') AS data_inicio, DATE_FORMAT(comeca_em, '%T') AS hora_inicio FROM leiloes WHERE finalizado = 0 AND destaque = 1 ORDER BY comeca_em ASC LIMIT 0, 7";
     $result_leiloes_dest = $pdo->query($query_leiloes_dest);
     $dados4 = $result_banners->fetchAll(PDO::FETCH_ASSOC);
     $num_leiloes_dest = count($dados4);

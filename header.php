@@ -84,7 +84,7 @@ $_SESSION['pagina_anterior'] = basename($_SERVER['SCRIPT_NAME']);
                         </div>
                         <?php endif;?>
                         <div class="box-data">
-                            <p>Não perca a hora do seu leilão! Agora são <span id="time"><?php echo $hr ?></span> do dia <span id="data"><?php echo $dia ?> de <?php echo $config['meses'][$mes - 1] ?> de <?php echo $ano ?></span></p>
+                            <p>Não perca a hora do seu leilão! Agora são <span id="time"></span></p>
                         </div>
 
                     </div>

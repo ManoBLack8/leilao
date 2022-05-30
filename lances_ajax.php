@@ -9,7 +9,7 @@ function getLances() {
     $resultado = array();
 
     //AND comeca_em >= '$datetime_atual'
-    $query_leiloes = "SELECT * FROM leiloes WHERE status = 1 ORDER BY comeca_em ASC ";
+    $query_leiloes = "SELECT * FROM leiloes ORDER BY comeca_em ASC ";
 
     $result_leiloes = $pdo->query($query_leiloes);
     $result_leiloes = $result_leiloes->fetchAll(PDO::FETCH_ASSOC);
@@ -21,7 +21,8 @@ function getLances() {
         foreach ($result_leiloes as $leilao) {
             $leilao['comecou'] = FALSE;
             $leilao['finalizou'] = FALSE;
-
+            $originaldata = strtotime($leilao['comeca_em']);
+            $leilao['MicroTimeFim'] = $originaldata;
             if ($leilao['comeca_em'] <= $datetime_atual) {
                 $leilao['comecou'] = TRUE;
 
@@ -119,7 +120,6 @@ function setLance($id_leilao, $id_usuario, $valor_lance, $duracao, $comeca_em) {
     }
 
     $datetime_atual = date("Y-m-d H:i:s", mktime(gmdate("H") - 3, gmdate("i"), gmdate("s"), gmdate("m"), gmdate("d"), gmdate("Y")));
-    $resultado['result'] = FALSE;
 
     $query = "INSERT INTO lances VALUES (NULL, " . $id_leilao . ", " . $id_usuario . ", '" . $valor_lance . "', '" . $datetime_atual . "')";
     $result = $pdo->query($query);
@@ -136,14 +136,14 @@ function setLance($id_leilao, $id_usuario, $valor_lance, $duracao, $comeca_em) {
             $result = $pdo->query($query);
         }
 
-        $resultado['result'] = TRUE;
+        $resultado = "SUCESSO";
     }
     return $resultado;
 
 }
 
 $action = @$_REQUEST['action'];
-$id_leilao = (isset($_REQUEST['id'])) ? $_REQUEST['id'] : NULL;
+$id_leilao = (isset($_REQUEST['CodigoLeilao'])) ? $_REQUEST['CodigoLeilao'] : NULL;
 
 if ($action == "get") {
     $retorno = getLances();
@@ -152,7 +152,7 @@ if ($action == "get") {
 } else if ($action == "set") {
     $usuario = 0;
     $valor_lance = 0.01;
-    $id_usuario = $_REQUEST['id_usuario'];
+    $id_usuario = $_SESSION['id_usuario'];
     
     $query_num_lances = "SELECT num_lances FROM usuarios WHERE id = " . $id_usuario;
     $result_num_lances = $pdo->query($query_num_lances);
@@ -187,20 +187,19 @@ if ($action == "get") {
                 $comeca_em = $leilao['comeca_em'];
             }
 
-            $retorno = setLance($id_leilao, $id_usuario, $valor_lance, $duracao, $comeca_em);
+            setLance($id_leilao, $id_usuario, $valor_lance, $duracao, $comeca_em);
         } else{
-            $resultado['result'] = FALSE;
-            $resultado['reason'] = "O último lance já é seu.";
+             echo "LANCESENDOCOMPUTADO";
             
             $retorno = $resultado;
         }
     } else{
-        $resultado['result'] = FALSE;
-        $resultado['reason'] = "Você não tem mais lances, compre mais para continuar na disputa.";
+       
+        $resultado = "SEMLANCES";
         
         $retorno = $resultado;
     }
 
-    echo json_encode($retorno);
+    echo "iae";
 }
 ?>

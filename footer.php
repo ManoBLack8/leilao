@@ -1,3 +1,4 @@
+
 <div class="rodape" style="display: flex;flex-direction: column;">
         <div class="parceiros" style="flex-direction: row; width:100%;">
             <ul>
@@ -45,7 +46,7 @@
 </div>
     
         <!-- jquery e script's -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="js/jquery-3.3.1.min.js"></script>
         <script type="text/javascript">
             $(window).load(function () {
                 // start the slideshow
@@ -86,8 +87,8 @@
                 { action: "get" },
                 function(data){
                     //alert('valor_'+data.lances[0]['id']);
-                    
                     for(i=0; i < data.lances.length; i++){
+                        
                         if(data.lances[i]['finalizou']){
                             $('#box_lance_'+data.lances[i]['id']).html("<h3>Arrematado!</h3><p>"+data.lances[i]['usuario']+"</p>");
                             if(valor != data.lances[i]['valor_lance']) $('#valor_'+data.lances[i]['id']).html("R$ "+data.lances[i]['valor_lance']);
@@ -134,24 +135,16 @@
             );
             }
             
-            setInterval(function(){ get_data_hora() }, 1000);
-            setInterval(function(){ get_lances() }, 100);
-            setInterval(function(){ get_contador() }, 1100);
+            //setInterval(function(){ get_data_hora() }, 1000);
+            //setInterval(function(){ get_lances() }, 100);
+            //setInterval(function(){ get_contador() }, 1000);
         </script>
         <!-- fim script's -->
 
         <?php unset($_SESSION['msg_error']); ?>
     </body>
 </html>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-220339692-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'UA-220339692-1');
-</script>
 <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
     <script src="assets/js/vendor/jquery-migrate-3.3.2.min.js"></script>
     <!-- Modernizer JS -->
@@ -180,3 +173,4 @@
     <script src="assets/js/plugins/jquery.zoom.min.js"></script>
     <!-- Timecircles JS -->
     <script src="assets/js/plugins/timecircles.js"></script>
+    <script src="js/geral.js"></script>
