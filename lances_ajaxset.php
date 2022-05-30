@@ -1,19 +1,19 @@
 <?php
 include_once('admin/includes/conexao.php');
 session_start();
+date_default_timezone_set('America/Sao_Paulo');
 $id_leilao = $_REQUEST['CodigoLeilao'];
 $usuario = 0;
 $valor_lance = 0.01;
 $id_usuario = @$_SESSION['id_usuario'];
-if ($id_usuario) {
+if ($id_usuario > 0) {
+
     $query_num_lances = "SELECT num_lances FROM usuarios WHERE id = '$id_usuario'";
     $result_num_lances = $pdo->query($query_num_lances);
     $result_num_lances = $result_num_lances->fetchAll(PDO::FETCH_ASSOC);
     foreach ($result_num_lances as $num_lances) {
         $num_num_lances = $num_lances["num_lances"];
     }
-    var_dump($result_num_lances);
-
     if ($num_num_lances > 0) {
         $query_lances = "SELECT id_usuario, valor_lance FROM lances WHERE id_leilao = " . $id_leilao . " ORDER BY id DESC LIMIT 0, 1";
         $result_lances = $pdo->query($query_lances);
@@ -21,7 +21,7 @@ if ($id_usuario) {
         $num_lances = count($result_lances);
 
         if ($num_lances > 0) {
-            $lance = $result_lances;
+            $lance = $result_lances[0];
 
             $usuario = $lance['id_usuario'];
             $valor_lance = $lance['valor_lance'] + 0.01;
@@ -32,25 +32,19 @@ if ($id_usuario) {
             $result_duracao = $pdo->query($query_duracao);
             $result_duracao = $result_duracao->fetchAll(PDO::FETCH_ASSOC);
             $num_duracao = count($result_duracao);
-
-            if ($num_duracao > 0) {
-                $leilao = $result_duracao;
-
-                $duracao = $leilao['duracao'];
-                $comeca_em = $leilao['comeca_em'];
+            foreach ($result_duracao as $dura) {
+                $duracao = $dura['duracao'];
+                $comeca_em = $dura['comeca_em'];
             }
 
             setLance($id_leilao, $id_usuario, $valor_lance, $duracao, $comeca_em);
-        } else{
+        }else{
                 echo "LANCESENDOCOMPUTADO";
-            
-            $retorno = $resultado;
         }
     } else{
         
-        $resultado = "SEMLANCES";
-        
-        $retorno = $resultado;
+        echo "SEMLANCES";
+
     }
 
 }else{
@@ -70,6 +64,7 @@ function setLance($id_leilao, $id_usuario, $valor_lance, $duracao, $comeca_em) {
     }
 
     $datetime_atual = date("Y-m-d H:i:s", mktime(gmdate("H") - 3, gmdate("i"), gmdate("s"), gmdate("m"), gmdate("d"), gmdate("Y")));
+    $datetime_atual_micro = date("Y-m-d H:i:s", mktime(gmdate("H") - 3, gmdate("i"), (gmdate("s") + 15), gmdate("m"), gmdate("d"), gmdate("Y")));
 
     $query = "INSERT INTO lances VALUES (NULL, " . $id_leilao . ", " . $id_usuario . ", '" . $valor_lance . "', '" . $datetime_atual . "')";
     $result = $pdo->query($query);
@@ -81,13 +76,13 @@ function setLance($id_leilao, $id_usuario, $valor_lance, $duracao, $comeca_em) {
 
     if ($num_result > 0) {
         if($comeca_em <= $datetime_atual){
-            $nova_duracao = 15;
-            $query = "UPDATE leiloes SET duracao = " . $nova_duracao . " WHERE id = " . $id_leilao;
+            $nova_duracao =  $datetime_atual_micro;
+            $query = "UPDATE leiloes SET comeca_em = '$datetime_atual_micro' WHERE id = " . $id_leilao;
             $result = $pdo->query($query);
         }
 
         $resultado = "SUCESSO";
     }
-    return $resultado;
+    echo $resultado;
 
 }

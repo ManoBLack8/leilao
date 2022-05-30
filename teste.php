@@ -1,3 +1,6 @@
-<?php $input = array(10, 11, 2, 25, 8);
-$rand_keys = array_rand($input);
-var_dump($input[$rand_keys]);
+<?php 
+    $date = date("Y-m-d H:i:s", mktime(gmdate("H") - 3, gmdate("i"), (gmdate("s")), gmdate("m"), gmdate("d"), gmdate("Y")));
+    $dates = date("Y-m-d H:i:s", mktime(gmdate("H") - 3, gmdate("i"), (gmdate("s") + 15), gmdate("m"), gmdate("d"), gmdate("Y")));
+
+var_dump($date);
+var_dump($dates);

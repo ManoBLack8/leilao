@@ -657,7 +657,7 @@ function RequisitacaoLeiloesDados(DadsRet){
         //console.debug(ret.MicroTimeFim)
         $("#L_Fixador_"+Cod).html(ret.duracao);
         $("#L_FaltaSegundos_"+Cod).html(ret.FaltaSegundos);
-        $("#L_UltimoLogin_"+Cod).html(ret.UltimoLogin);
+        $("#L_UltimoLogin_"+Cod).html(ret.usuario);
         $("#L_UltimoLogin2_"+Cod).html(ret.usuario);
         $("#L_UltimoCodigo_"+Cod).html(ret.UltimoCodigo);
         $("#L_UltimoValor_"+Cod).html(ret.valor_lance);
@@ -797,8 +797,9 @@ function ExecutarLance(CodigoLeilao)
     data:"CodigoLeilao="+CodigoLeilao+"&Rand="+encodeURI(Math.random()),
     success:function(msg){
         console.debug(msg);
-        Tmpa=msg;
-        switch(trim(Tmpa)){
+        Tmpa=msg.trim();
+        
+        switch(Tmpa){
             case"Tipo_1":
                 Utilitarios.Alerta("","Leilão Iniciante - Apenas para quem ainda não arrematou nenhum leilão!","success");
             break;
@@ -813,8 +814,9 @@ function ExecutarLance(CodigoLeilao)
                 window.location="/MinhaConta_ComprarLances.php";
                 break;
             case"NAOLOGADO":
-                alert("Efetue seu Login!")
-                window.location="./teste.php";
+                if (confirm("Efetue seu Login!")) {
+                window.location="./";
+                }
                 break;
             case"SEMLIMITE":
                 if(confirm("Seu limite de leilões por mês foi alcançado!")){
@@ -850,6 +852,7 @@ function ExecutarLance(CodigoLeilao)
                     $("#QtdLancesBox_"+CodigoLeilao).hide();
                     $("#QtdLances_"+CodigoLeilao).hide().html("0");
                 }
+                RecomecaListaLeiloes()
             break;
         }
         $("#L_BotaoA_"+CodigoLeilao).show();
@@ -1010,6 +1013,8 @@ $(document).ready(function(){
     MicroTimeServidor();
     MontaListaLeiloes();
     CarregarUsuarioOnline();
+    setInterval(function(){  RecomecaListaLeiloes() }, 100);
+   
     $(".matchHeight").matchHeight();
     BdWidth=parseInt($("body").width());
     if(BdWidth>1140){BdWidth2=1140;}else{BdWidth2=BdWidth;}
