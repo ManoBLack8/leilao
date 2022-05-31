@@ -703,7 +703,6 @@ function ContDowLeiloes(){
                 Fixador=Trim(VarBoxSepara[1]);    
                 Status=Trim(VarBoxSepara[2]);
                 DataFinalizacao=Trim(VarBoxSepara[3]);Diferenca=TimeProduto-TimeAtual-GmtSegundo-FalhaTempo-1;
-                console.debug(Diferenca);
                 if(Status=="2"){
                     CarregaTimeLeilao(CodigoLeilao,Fixador,Diferenca,DataFinalizacao);
                 }else if(Status=="3"){

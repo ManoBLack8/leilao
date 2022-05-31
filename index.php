@@ -62,7 +62,7 @@
 
     
     //AND comeca_em >= '$datetime_atual'
-    $query_leiloes = "SELECT *,leiloes.id AS id, DATE_FORMAT(comeca_em, '%d/%m/%Y') AS data_inicio, DATE_FORMAT(comeca_em, '%T') AS hora_inicio FROM leiloes LEFT OUTER JOIN imagens ON imagens.id_leilao = leiloes.id ORDER BY leiloes.id ASC ";
+    $query_leiloes = "SELECT *,leiloes.id AS id, DATE_FORMAT(comeca_em, '%d/%m/%Y') AS data_inicio, DATE_FORMAT(comeca_em, '%T') AS hora_inicio FROM leiloes LEFT OUTER JOIN imagens ON imagens.id_leilao = leiloes.id WHERE leiloes.status > 0  ORDER BY leiloes.id ASC ";
     $result_leiloes = $pdo->query($query_leiloes);
     $res = $result_leiloes->fetchAll(PDO::FETCH_ASSOC);
     $num_leiloes = count($res);
