@@ -85,17 +85,6 @@
             
             ?>
             <div class="<?=  ($count %3 == 0) ? 'produto-ult' : 'produto'; ?>" id="leilao_<?= $leilao['id'] ?>">
-                <?php if ($leilao['comeca_em'] > $datetime_atual): ?>
-                    <a style="text-decoration:none;" href="<?= $leilao['slug']; ?>" title="">
-                        <div style="position:relative; left: -10px;" id="targe_auction_<?= $leilao['id'] ?>">
-                            <div class="product-targe" id="targe_<?= $leilao['id'] ?>">
-                                Início do Cronômetro:
-                                <div class="product-targe_time"><?= $leilao['data_inicio'] ?> - <?= $leilao['hora_inicio'] ?></div>
-                                <span class="product-targe_weekday">(Horário de Brasília)</span>
-                            </div>
-                        </div>
-                    </a>
-                <?php endif; ?>
                 <a href="<?= @$leilao['slug']; ?>" class="desc-prod">
                     <h3><?= @$leilao['titulo']; ?></h3>
                     
