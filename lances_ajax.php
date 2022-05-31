@@ -79,7 +79,7 @@ function getLances() {
 
             $num_lances = count($result_lances);
 
-            $query_usu = "SELECT SUM(valor_lance) FROM lances WHERE id_leilao = '$leilao_id' LIMIT 1";
+            $query_usu = "SELECT SUM(valor_lance) FROM lances WHERE id_leilao = '$leilao_id'";
             //echo $query_lances;
             $result_usu = $pdo->query($query_usu);
             $result_usu = $result_usu->fetchAll(PDO::FETCH_ASSOC);

@@ -24,7 +24,7 @@ if ($id_usuario > 0) {
             $lance = $result_lances[0];
 
             $usuario = $lance['id_usuario'];
-            $valor_lance = $lance['valor_lance'] + 0.01;
+            $valor_lance = 0.01;
         }
 
         if($usuario != $id_usuario){    
