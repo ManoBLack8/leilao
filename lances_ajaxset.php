@@ -64,7 +64,7 @@ function setLance($id_leilao, $id_usuario, $valor_lance, $duracao, $comeca_em) {
     }
 
     $datetime_atual = date("Y-m-d H:i:s", mktime(gmdate("H") - 3, gmdate("i"), gmdate("s"), gmdate("m"), gmdate("d"), gmdate("Y")));
-    $datetime_atual_micro = date("Y-m-d H:i:s", mktime(gmdate("H") - 3, gmdate("i"), (gmdate("s") + 15), gmdate("m"), gmdate("d"), gmdate("Y")));
+    $datetime_atual_micro = date("Y-m-d H:i:s", mktime(gmdate("H") - 3, gmdate("i"), (gmdate("s") + 16), gmdate("m"), gmdate("d"), gmdate("Y")));
 
     $query = "INSERT INTO lances VALUES (NULL, " . $id_leilao . ", " . $id_usuario . ", '" . $valor_lance . "', '" . $datetime_atual . "')";
     $result = $pdo->query($query);
