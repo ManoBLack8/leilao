@@ -15,6 +15,7 @@
             <ul class="sub">
                 <li><a href="administrador.php">Administradores</a></li>
                 <li><a href="usuario.php">Usuários</a></li>
+                <li><a href="bots.php">BOT</a></li>
                 <li><a href="promotores.php">Promotores</a></li>
                 <li class="last"><a href="depoimento.php">Depoimentos</a></li>
                 <!--<li><a href="ips">Endereços IP</a></li>-->

@@ -140,8 +140,10 @@ $query = $query->fetchAll(PDO::FETCH_ASSOC);?>
                         <label>Status:</label>
                         <div class="formRight">                        
                             <select name="status">
-                                <option value="1" selected="selected" >Ativo</option>
-                                <option value="0">Inativo</option>
+                                <option value="2" selected="selected" >Ativo</option>
+                                <option value="3">Pausar</option>
+                                <option value="4">Arrematar</option>
+                                <option value="0">inativo</option>
                             </select>
                         </div>
                         <div class="fix"></div>

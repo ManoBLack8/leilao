@@ -2,6 +2,11 @@
 include_once('admin/includes/conexao.php');
 session_start();
 extract($_REQUEST);
+if ($bot == '1') {
+    $status = 2;
+}else{
+    $status = 1;
+}
 
 if ($email != $email2) {
     echo "os email não são iguais";
@@ -16,7 +21,7 @@ $query = " SELECT * FROM usuarios WHERE email = '$email' OR login = '$login'";
 $query = $pdo->query($query);
 $query = $query->fetchAll(PDO::FETCH_ASSOC);
 if (count($query) == 0) {
-    $query = "INSERT INTO usuarios VALUES (NULL, '$login', '$senha', '$nome', '$email', '$cpf', '$telefone', '$sexo', 'S', '$data_nascimento', '$endereco', '$numero', '$complemento', '$cep', '$bairro', '$cidade', '$estado', '$data_agora', '$data_agora', '0', '5', '$ip', '1' )";
+    $query = "INSERT INTO usuarios VALUES (NULL, '$login', '$senha', '$nome', '$email', '$cpf', '$telefone', '$sexo', 'S', '$data_nascimento', '$endereco', '$numero', '$complemento', '$cep', '$bairro', '$cidade', '$estado', '$data_agora', '$data_agora', '0', '5', '$ip', '$status' )";
     $inseiri = $pdo->query($query); $sql = " SELECT * FROM usuarios WHERE login = '$login' and senha = '$senha'";
 
     $query = $pdo->query($sql);
