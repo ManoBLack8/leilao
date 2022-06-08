@@ -26,7 +26,7 @@
 </style>
 <div class="container" style="display: flex;">
     <div>
-        <form action="cadastrar_back.php" style="padding-top: 20px;" method="POST">
+        <form action="../cadastrar_back.php?bot=1" style="padding-top: 20px;" method="POST">
             <div class="dados_pessoais">
                 <div class="input_cadastro">
                     <label for="">Nome Completo</label><br>
