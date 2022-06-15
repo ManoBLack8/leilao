@@ -1,6 +1,1 @@
-<?php 
-    $date = date("Y-m-d H:i:s", mktime(gmdate("H") - 3, gmdate("i"), (gmdate("s")), gmdate("m"), gmdate("d"), gmdate("Y")));
-    $dates = date("Y-m-d H:i:s", mktime(gmdate("H") - 3, gmdate("i"), (gmdate("s") + 15), gmdate("m"), gmdate("d"), gmdate("Y")));
-
-var_dump($date);
-var_dump($dates);
+<iframe width="709" height="399" src="https://www.youtube.com/embed/npf9col276o?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

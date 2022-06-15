@@ -75,11 +75,8 @@ function setLance($id_leilao, $id_usuario, $valor_lance, $duracao, $comeca_em) {
     $num_result = count($result);
 
     if ($num_result > 0) {
-        if($comeca_em <= $datetime_atual){
-            $nova_duracao =  $datetime_atual_micro;
-            $query = "UPDATE leiloes SET comeca_em = '$datetime_atual_micro' WHERE id = " . $id_leilao;
-            $result = $pdo->query($query);
-        }
+        $query = "UPDATE leiloes SET comeca_em = '$datetime_atual_micro' WHERE id = " . $id_leilao;
+        $result = $pdo->query($query);
 
         $resultado = "SUCESSO";
     }
