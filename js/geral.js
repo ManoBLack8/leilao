@@ -707,7 +707,7 @@ function ContDowLeiloes(){
                     CarregaTimeLeilao(CodigoLeilao,Fixador,Diferenca,DataFinalizacao);
                 }else if(Status=="3"){
                     CarregaTimeLeilao(CodigoLeilao,Fixador,Fixador,DataFinalizacao);
-                }else if(Status=="F"){
+                }else if(Status=="4"){
                     DisparaFinalizadoLeilao(CodigoLeilao,Fixador,Diferenca);
                 }
             }
@@ -728,6 +728,7 @@ function DisparaFinalizadoLeilao(CodigoLeilao,Fixador,Diferenca){
     }else{
         RequisitacaoLeiloesEsp(CodigoLeilao);
         $("#L_StatusTxt_"+CodigoLeilao).html("Em Andamento!");
+        
         $("#L_StatusTxt2A_"+CodigoLeilao).hide();
         $("#L_StatusTxt2B_"+CodigoLeilao).show();
         $("#L_Botao_Box_"+CodigoLeilao).show();
@@ -758,6 +759,7 @@ function CarregaTimeLeilao(CodigoLeilao,Fixador,Diferenca,DataFinalizacao)
 
     if(Diferenca<1){
         RetroClock(CodigoLeilao,1);
+        CarregarLance(CodigoLeilao, Diferenca)
     }else{
         
         if(Diferenca<Fixador){
@@ -996,6 +998,16 @@ function CarregarUsuarioOnline(){
         });
     }
 }
+
+function CarregarLance(CodigoLeilao, Diferenca){
+    $.ajax({
+        type:"GET",
+        url:"./carregarLance.php",
+        data:"id="+CodigoLeilao,
+        success:function(msg){
+        }
+    });
+}
 $(window).load(function(){
     $("#loader-wrapper").fadeOut("fast");
 });
@@ -1012,7 +1024,7 @@ $(document).ready(function(){
     MicroTimeServidor();
     MontaListaLeiloes();
     CarregarUsuarioOnline();
-    setInterval(function(){  RecomecaListaLeiloes() }, 100);
+    setInterval(function(){  RecomecaListaLeiloes() }, 500 );
    
     $(".matchHeight").matchHeight();
     BdWidth=parseInt($("body").width());
