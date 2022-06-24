@@ -99,7 +99,7 @@
             ?>
             <div class="<?=  ($count %3 == 0) ? 'produto-ult' : 'produto'; ?>" id="leilao_<?= $leilao['id'] ?>">
             <div class="text-conteiner">
-                <p class="text-content">Ínicio dia 24/06/2022 06:50:12</p>
+                <p class="text-content">Ínicio dia <?= $leilao['inicio_em'] ?></p>
             </div>
                 <a href="<?= @$leilao['slug']; ?>" class="desc-prod">
                     <h3><?= @$leilao['titulo']; ?></h3>
