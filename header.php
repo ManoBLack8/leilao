@@ -36,6 +36,9 @@ $_SESSION['pagina_anterior'] = basename($_SERVER['SCRIPT_NAME']);
 
         <!-- Main Style CSS -->
         <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
         
     </head>
 

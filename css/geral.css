@@ -194,10 +194,15 @@ button.bt-ok {
 
 .produto {
     width: 280px;
-    height: 416px;
+    height: 500px;
     padding: 10px;
     float: left;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 20px;
+    border: 1px solid #c1c1c1;
     background: url(../img/bg-produto.png) no-repeat;
     margin: 60px 30px 0 0;
 }
@@ -213,7 +218,7 @@ button.bt-ok {
 }
 .produto-ult a{text-decoration: none;}
 .produto-ult a .p-ult{position:relative; left: -10px;}
-a.desc-prod {text-align: center; color: #343434; font-size: 13px; text-decoration: none; display: block; float: left;}
+a.desc-prod {text-align: center; color: #343434; font-size: 20px; text-decoration: none; display: block; float: left; font-family: Arial, sans-serif;font-family: 'Staatliches', cursive;}
 
 .img-prod {width: 280px; height: 223px; overflow: hidden;}
 .img-prod img {padding: 20px 0 0 0;}

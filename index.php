@@ -33,6 +33,7 @@
     border:1px solid #c1c1c1;
     border-radius: 10px;
     margin: 5px;
+    width: 250px;
 }
 .text-content{
     font-family: Arial, serif;
