@@ -260,7 +260,7 @@ a.desc-prod {text-align: center; color: #343434; font-size: 20px; text-decoratio
 
 .produto p, .produto-ult p {}
 
-.box-lance {float: left; margin: 10px 0 0 0; width: 100%; text-align: center;}
+.box-lance {float: left; margin: -19px 0 0 0; width: 100%; text-align: center;}
 .box-lance h3 { font-size: 30px; color: #82C305; font-weight: bold; }
 .box-lance p { font-size: 15px; font-weight: bold; margin-top: 5px; }
 
