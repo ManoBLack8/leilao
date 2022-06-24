@@ -25,6 +25,19 @@
 	padding: 0;
 	margin-right: 6px;
 }
+.text-conteiner{
+    display !important:flex
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+    border:1px solid #c1c1c1;
+    border-radius: 10px;
+    margin: 5px;
+}
+.text-content{
+    font-family: Arial, serif;
+    font-size:15px;
+}
 </style>
 <div class="banners">
     <!-- slideshow images -->
@@ -85,6 +98,9 @@
             
             ?>
             <div class="<?=  ($count %3 == 0) ? 'produto-ult' : 'produto'; ?>" id="leilao_<?= $leilao['id'] ?>">
+            <div class="text-conteiner">
+                <p class="text-content">Ínicio dia 24/06/2022 06:50:12</p>
+            </div>
                 <a href="<?= @$leilao['slug']; ?>" class="desc-prod">
                     <h3><?= @$leilao['titulo']; ?></h3>
                     
