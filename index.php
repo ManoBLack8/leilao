@@ -154,14 +154,6 @@
     }
     ?>
 </div>
-<div class="paginacao">
-    <ul>
-        <li class="bt-grande"><a href="#">Anterior</a></li>
-        <li class="num"><a href="#" class="ativo">1</a></li>
-        <li class="num"><a href="#">2</a></li>
-        <li class="num"><a href="#">3</a></li>
-        <li class="bt-grande"><a href="#">Próximo</a></li>
-    </ul>
 </div>
 
 <div class="prox-leiloes">
