@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&family=Staatliches&display=swap" rel="stylesheet">
     <title>Leilões arrematados</title>
 </head>
 <body>
@@ -25,6 +25,7 @@
     </div>
         <p class="text-content item">Item 1</p>
         <div class="img-content"><img src="https://cdn-icons-png.flaticon.com/512/1942/1942023.png" alt=""></div>
+        <div class="text-content user">usuario</div>
         <div class="valor-item">R$ 00,00</div>
     </div>
     <div class="item-conteiner conteiner 2">
@@ -34,6 +35,7 @@
     </div>
         <p class="text-content item">Item 2</p>
         <div class="img-content"><img src="https://cdn-icons-png.flaticon.com/512/1942/1942023.png" alt=""></div>
+        <div class="text-content user">usuario</div>
         <div class="valor-item">R$ 00,00</div>
     </div>
     <div class="item-conteiner conteiner 3">
@@ -43,6 +45,7 @@
 </div>
     <p class="text-content item">Item 3</p>
     <div class="img-content"><img src="https://cdn-icons-png.flaticon.com/512/1942/1942023.png" alt=""></div>
+    <div class="text-content user">usuario</div>
     <div class="valor-item">R$ 00,00</div>
     </div>
 </div>

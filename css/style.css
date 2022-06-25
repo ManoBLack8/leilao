@@ -3509,7 +3509,7 @@ select {
 	justify-content: center;
 	flex-direction: column;
 	border: 1px solid #c1c1c1;
-	height: 500px;
+	height: 550px;
 	width: 300px;
 	border-radius: 15px;
 	text-align: center
@@ -3528,7 +3528,6 @@ select {
 }
 .valor-item{
 	font-size: 45px;
-	margin-top: 20px;
 	font-family: Arial, Helvetica, sans-serif;
 	color: #82c305;
 	font-weight: bold;
@@ -3549,6 +3548,7 @@ select {
 	width: 940px;
 	border-radius: 10px;
 	color: black;
+	font-family: 'Rubik', sans-serif;
 }
 .tudo{
 	display: flex;
@@ -3565,5 +3565,10 @@ select {
 	background: url(../img/bg-verde.png);
 	background-repeat: no-repeat;
 	background-size: cover;   
+}
+.user{
+	font-family: 'Staatliches', Arial;
+	font-size: 25px;
+	margin-top: 10px;
 }
 
