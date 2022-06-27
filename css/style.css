@@ -3588,6 +3588,7 @@ select {
 	height: 600px;
 	border: 1px solid #c1c1c1;
 	border-radius: 15px;
+	background-color: white;
 }
 .img-footer{
 	display: flex;
@@ -3615,6 +3616,7 @@ select {
 	height: 130px;
 	border: 1px solid #c1c1c1;
 	border-radius: 15px;
+	background-color: white;
 }
 .preço{
 	display: flex;
@@ -3688,3 +3690,16 @@ select {
 	font-family: Arial, Helvetica, sans-serif;
 	margin-top: 10px;
 }
+.menu {
+	display: flex;
+	justify-content: center;
+    width: 100%;
+    height: 48px;
+    background: #82C305;
+    padding: 0;
+    margin: 0;
+}
+
+.menu ul {float: left; margin: 0; padding: 0;}
+.menu ul li {float: left; margin: 16px 0 0 30px; list-style: none;}
+.menu ul li a {height: 14px; display: block; color: #FFF; font-size: 25px; font-weight: 600; text-decoration: none;}

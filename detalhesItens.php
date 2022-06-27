@@ -10,7 +10,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik&family=Staatliches&display=swap" rel="stylesheet">
     <title>Leilão Item X</title>
 </head>
-<body>
+<body class="body">
+    <header class="header-detalhes"><div class="menu">
+                    <ul style="align-items: center;">
+                        <li class="bt-home"><a href="./">Home</a></li>
+                        <li class="bt-cadastro"><a href="cadastrar.php">Cadastro</a></li>
+                        <li class="bt-depoimentos"><a href="depoimentos.php">Depoimentos</a></li>
+                        <li class="bt-ajuda"><a href="comprar.php">Comprar Lances</a></li>
+                        <li class="bt-contato"><a href="contato.php">Contato</a></li>
+                    </ul>
+</div></header>
     <div>
     <div class="detalhes-conteiner">
     <div class="img-conteiner">
