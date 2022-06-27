@@ -25,6 +25,20 @@
 	padding: 0;
 	margin-right: 6px;
 }
+.text-conteiner{
+    display !important:flex
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+    border:1px solid #c1c1c1;
+    border-radius: 10px;
+    margin: 5px;
+    width: 250px;
+}
+.text-content{
+    font-family: Arial, serif;
+    font-size:15px;
+}
 </style>
 <div class="banners">
     <!-- slideshow images -->
@@ -85,6 +99,9 @@
             
             ?>
             <div class="<?=  ($count %3 == 0) ? 'produto-ult' : 'produto'; ?>" id="leilao_<?= $leilao['id'] ?>">
+            <div class="text-conteiner">
+                <p class="text-content">Ínicio dia <?= $leilao['inicio_em'] ?></p>
+            </div>
                 <a href="<?= @$leilao['slug']; ?>" class="desc-prod">
                     <h3><?= @$leilao['titulo']; ?></h3>
                     
@@ -137,14 +154,6 @@
     }
     ?>
 </div>
-<div class="paginacao">
-    <ul>
-        <li class="bt-grande"><a href="#">Anterior</a></li>
-        <li class="num"><a href="#" class="ativo">1</a></li>
-        <li class="num"><a href="#">2</a></li>
-        <li class="num"><a href="#">3</a></li>
-        <li class="bt-grande"><a href="#">Próximo</a></li>
-    </ul>
 </div>
 
 <div class="prox-leiloes">

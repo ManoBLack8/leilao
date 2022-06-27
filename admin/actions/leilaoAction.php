@@ -29,6 +29,7 @@ switch ($acao) {
         $status = $_POST['status'];
         $categoria = $_POST['categoria'];
         $arrematado_em = NULL;
+        $inicio_em = $comeca_em;
 
         if (!empty($_FILES) && !$_FILES['img']['error'][0]) {
             $dir = '../uploads/leilao/img/';
@@ -60,7 +61,7 @@ switch ($acao) {
             $image_thumb->save($file_thumb);
         }
 
-        $query = "INSERT INTO leiloes VALUES (NULL, " . $id_admin . ", '" . $categoria . "', '" . $titulo . "', '" . $descricao . "', '" . $img_src . "', '" . $duracao . "', '" . $comeca_em . "', '" . $finaliza_em . "', '" . $quantidade . "', '" . $valor . "', '" . $num_lances . "', '" . $frete . "', '" . $arremate . "', '" . $destaque . "', '" . $status . "','" . $arrematado_em . "', '" . $finalizado . "')";
+        $query = "INSERT INTO leiloes VALUES (NULL, " . $id_admin . ", '" . $categoria . "', '" . $titulo . "', '" . $descricao . "', '" . $img_src . "', '" . $duracao . "', '" . $inicio_em . "', '" . $comeca_em . "', '" . $finaliza_em . "', '" . $quantidade . "', '" . $valor . "', '" . $num_lances . "', '" . $frete . "', '" . $arremate . "', '" . $destaque . "', '" . $status . "','" . $arrematado_em . "', '" . $finalizado . "')";
         $result = $pdo->query($query);
 
         $query = "SELECT id FROM leiloes WHERE titulo = '" . $titulo . "' AND descricao = '" . $descricao . "'";
@@ -155,6 +156,7 @@ switch ($acao) {
         $destaque = $_POST['destaque'];
         $num_lances = 0;
         $status = $_POST['status'];
+        $inicio_em = $comeca_em;
 
         if (!empty($_FILES) && !$_FILES['img']['error'][0]) {
             $dir = '../uploads/leilao/img/';
@@ -185,10 +187,10 @@ switch ($acao) {
             $image_thumb->resize(100, 70);
             $image_thumb->save($file_thumb);
 
-            $query = "UPDATE leiloes SET id_admin = " . $id_admin . ", titulo = '" . $titulo . "', descricao = '" . $descricao . "', img_src = '" . $img_src . "', duracao = " . $duracao . ", comeca_em = '" . $comeca_em . "', quantidade_item = " . $quantidade . ", valor_item = '" . $valor . "', frete = " . $frete . ", arremate = " . $arremate . ", destaque = " . $destaque . ", status = " . $status . " WHERE id = " . $id;
+            $query = "UPDATE leiloes SET id_admin = " . $id_admin . ", titulo = '" . $titulo . "', descricao = '" . $descricao . "', img_src = '" . $img_src . "', duracao = " . $duracao . ", inicio_em = " . $inicio_em . ", comeca_em = '" . $comeca_em . "', quantidade_item = " . $quantidade . ", valor_item = '" . $valor . "', frete = " . $frete . ", arremate = " . $arremate . ", destaque = " . $destaque . ", status = " . $status . " WHERE id = " . $id;
             $result = $pdo->query($query);
         } else {
-            $query = "UPDATE leiloes SET id_admin = " . $id_admin . ", titulo = '" . $titulo . "', descricao = '" . $descricao . "', duracao = " . $duracao . ", comeca_em = '" . $comeca_em . "', quantidade_item = " . $quantidade . ", valor_item = '" . $valor . "', frete = " . $frete . ", arremate = " . $arremate . ", destaque = " . $destaque . ", status = " . $status . " WHERE id = " . $id;
+            $query = "UPDATE leiloes SET id_admin = " . $id_admin . ", titulo = '" . $titulo . "', descricao = '" . $descricao . "', duracao = " . $duracao . ", inicio_em = " . $inicio_em . ", comeca_em = '" . $comeca_em . "', quantidade_item = " . $quantidade . ", valor_item = '" . $valor . "', frete = " . $frete . ", arremate = " . $arremate . ", destaque = " . $destaque . ", status = " . $status . " WHERE id = " . $id;
             $result = $pdo->query($query);
         }
 
