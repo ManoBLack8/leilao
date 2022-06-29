@@ -2873,18 +2873,6 @@ select {
 	font-size: 18px;
 	letter-spacing: 2px;
 }
-
-.label_entrega{
-	text-align: center;
-	margin: 20px;
-	border-radius: 4px;
-	background: #f0efef;
-	padding: 5px;
-}
-.label_entrega h5,h4,p{
- margin-top: 10px;
- margin-left: auto;
-}
 .label_entrega h5{
 	margin-right: 0px;
 	margin-left: auto;
@@ -3542,7 +3530,7 @@ select {
 	height: 50px;
 	width: 940px;
 	border-radius: 10px;
-	color: black;
+	color: white;
 	font-family: 'Rubik', sans-serif;
 }
 .tudo{
