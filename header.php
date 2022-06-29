@@ -15,6 +15,7 @@ $_SESSION['pagina_anterior'] = basename($_SERVER['SCRIPT_NAME']);
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Leilão Duarte</title>
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="css/reset.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="css/geral.css" type="text/css" media="screen" />
