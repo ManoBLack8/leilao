@@ -1,7 +1,7 @@
 <?php require_once('header.php');
 @session_start();
 
-if(@$_SESSION['id_usuario'] == null || @$_SESSION['id_usuario'] > 0){
+if(@$_SESSION['id_usuario'] == null || @$_SESSION['id_usuario'] < 0){
     echo "<script language='javascript'> alert('é preciso ter login') </script>";
     echo "<script language='javascript'> window.location='index.php' </script>";
      
