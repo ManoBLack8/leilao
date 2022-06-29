@@ -909,11 +909,11 @@ function RelogioTopo(){
         data:"Acao=CarregarUsuarioOnline",
         success:function(msg){
             if(msg>0){
-                time=parseInt(msg);
+                time=parseInt(msg)+1;
                 Data1=date('d . F . Y',time);
                 Data1=Data1.replace(".","de");
                 Data2=date('H:i:s',time);
-                $("#time").html(date('l',time)+", "+Data1+' - '+Data2);
+                $("#time").html(date('l',time)+", "+Data1+' - '+date('H:i:s',msg));
                 var Requisitacoes_RelogioTopo=window.setTimeout("RelogioTopo()",1000);
             }
         }
