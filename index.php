@@ -146,7 +146,7 @@
                         <a href="javascript:;" title="Lance sendo Executado" class="btn btn-custom3"><i class="fa fa-spinner fa-spin"></i></a>
                     </div>
                 </div>
-                <div class="ExtSuBtn ExtSuBtnF" style="display: none; height:44px" id="L_Botao_BoxF_<?= $leilao['id'] ?>">Arrematado!</div>
+                <div class="ExtSuBtn ExtSuBtnF" style="display: none; height:44px; font-size:24px; color:red;" id="L_Botao_BoxF_<?= $leilao['id'] ?>">Arrematado!</div>
                 </div>
             </div>
             <?php

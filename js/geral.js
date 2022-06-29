@@ -903,15 +903,22 @@ function MicroTimeServidor()
 }
 function RelogioTopo(){
     clearTimeout(Requisitacoes_RelogioTopo);
-    if(MicroTime>0){
-        MicroTime=parseInt(MicroTime)+1;
-        Data1=date('d . F . Y',MicroTime);
-        Data1=Data1.replace(".","de");
-        Data1=Data1.replace(".","de");
-        Data2=date('H:i:s',MicroTime);
-        $("#time").html(date('l',MicroTime)+", "+Data1+' - '+Data2);
-        var Requisitacoes_RelogioTopo=window.setTimeout("RelogioTopo()",1000);
-    }
+    $.ajax({
+        type:"GET",
+        url:"./horario_atual.php",
+        data:"Acao=CarregarUsuarioOnline",
+        success:function(msg){
+            if(msg>0){
+                time=parseInt(msg);
+                Data1=date('d . F . Y',time);
+                Data1=Data1.replace(".","de");
+                Data2=date('H:i:s',time);
+                $("#time").html(date('l',time)+", "+Data1+' - '+Data2);
+                var Requisitacoes_RelogioTopo=window.setTimeout("RelogioTopo()",1000);
+            }
+        }
+    });
+    
 }
 function JsCapa(){
     $('#slideshow').revolution({

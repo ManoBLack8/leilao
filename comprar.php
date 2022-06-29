@@ -1,7 +1,7 @@
 <?php require_once('header.php');
 @session_start();
 
-if(@$_SESSION['id_usuario'] == null || @$_SESSION['id_usuario'] > 0){
+if(@$_SESSION['id_usuario'] == null || @$_SESSION['id_usuario'] < 0){
     echo "<script language='javascript'> alert('é preciso ter login') </script>";
     echo "<script language='javascript'> window.location='index.php' </script>";
      
@@ -22,15 +22,20 @@ $peso = 1;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    border-radius:10px;
 }
 
 .produto_preco button{
     width: 200px;
     height: 40px;
     border-radius: 20px;
-    background: #0e279f;
+    border:#c1c1c1;
+    background: #82c305;
     color: #fff;
     font-size: 24px;
+}
+.produto_preco button h1{
+    color:white;
 }
 
 .produto_texto{
