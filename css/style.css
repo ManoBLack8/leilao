@@ -3506,7 +3506,8 @@ select {
 	height: 550px;
 	width: 300px;
 	border-radius: 15px;
-	text-align: center
+	text-align: center;
+	background-color: white;
 }
 .img-content{
 	width: 200px;
@@ -3549,9 +3550,9 @@ select {
 	height: 100vh;
 	align-items: center;
 	flex-direction: column;
-	border-left: 1px solid #c1c1c1;
-	border-right: 1px solid #c1c1c1;
-	background-color: white;
+	border-left: 1px solid transparent;
+	border-right: 1px solid transparent;
+	background-color: transparent;
 }
 .bodyy{
 	background-repeat: no-repeat;
