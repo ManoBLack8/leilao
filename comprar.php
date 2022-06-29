@@ -22,15 +22,20 @@ $peso = 1;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    border-radius:10px;
 }
 
 .produto_preco button{
     width: 200px;
     height: 40px;
     border-radius: 20px;
-    background: #0e279f;
+    border:#c1c1c1;
+    background: #82c305;
     color: #fff;
     font-size: 24px;
+}
+.produto_preco button h1{
+    color:white;
 }
 
 .produto_texto{

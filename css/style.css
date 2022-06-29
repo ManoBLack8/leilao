@@ -3525,13 +3525,15 @@ select {
 	align-items: center;
 	justify-content: center;
 	font-size: 40px;
-	border: 1px solid #c1c1c1;
 	background-color: #82c305;
 	height: 50px;
-	width: 940px;
-	border-radius: 10px;
+	width: 960px;
 	color: white;
-	font-family: 'Rubik', sans-serif;
+	font-weight: bolder;
+	font-family: "Lucida Grande", Arial, Helvetica, sans-serif;
+	margin-top: 30px;
+	border-radius: 15px;
+    border: 1px solid #82C305;
 }
 .tudo{
 	display: flex;
