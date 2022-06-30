@@ -73,13 +73,22 @@ function setLance($id_leilao, $id_usuario, $valor_lance, $duracao, $comeca_em) {
     $result = $pdo->query($query);
     $result = $result->fetchAll(PDO::FETCH_ASSOC);
     $num_result = count($result);
+    $sql = "SELECT * FROM leiloes WHERE id = '$id_leilao'";
+    $result_leiloes = $pdo->query($sql);
+    $result_leiloes = $result_leiloes->fetchAll(PDO::FETCH_ASSOC);
 
-    if ($num_result > 0) {
-        $query = "UPDATE leiloes SET comeca_em = '$datetime_atual_micro' WHERE id = " . $id_leilao;
-        $result = $pdo->query($query);
+    $iniciomk = strtotime($result_leiloes[0]["inicio_em"]);
+    $atualmk = strtotime($datetime_atual);
 
-        $resultado = "SUCESSO";
+    if ($iniciomk > $atualmk) {
+        if ($num_result > 0) {
+            $query = "UPDATE leiloes SET comeca_em = '$datetime_atual_micro' WHERE id = " . $id_leilao;
+            $result = $pdo->query($query);
+    
+            $resultado = "SUCESSO";
+        }
     }
+    
     echo $resultado;
 
 }
