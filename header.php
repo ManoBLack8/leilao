@@ -22,6 +22,8 @@ $_SESSION['pagina_anterior'] = basename($_SERVER['SCRIPT_NAME']);
         <link rel="stylesheet" href="css/blinds.css" type="text/css" media="screen" />
         <!-- Fontawesome Star -->
         <link rel="stylesheet" href="assets/css/fontawesome-stars.min.css">
+        <!-- Linear icons -->
+        <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
         <!-- Ion Icon -->
         <link rel="stylesheet" href="assets/css/ion-fonts.css">
         <!-- Slick CSS -->
@@ -62,7 +64,8 @@ $_SESSION['pagina_anterior'] = basename($_SERVER['SCRIPT_NAME']);
                                     
                                     <input type="text" name="login" value="Login" class="inputLogin" title="Login" onclick="this.value=''" onfocus="this.value=''" onblur="if(value==''){this.value='Login'}" />
                                     <input type="password" name="password" value="Senha" class="inputSenha" title="Senha" onclick="this.value=''" onfocus="this.value=''" onblur="if(value==''){this.value='Senha'}" />
-                                    <button type="submit" class="bt-ok">OK</button>
+                                    <a href="" class="lnr lnr-eye"></a>
+                                    <button type="submit" class="bt-ok">OK</button>                       
                                 </form>
                                 <p><a href="#">Esqueci a senha</a></p>
                             </div>
