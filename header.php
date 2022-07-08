@@ -63,7 +63,7 @@ $_SESSION['pagina_anterior'] = basename($_SERVER['SCRIPT_NAME']);
                                     
                                     <input type="text" name="login" value="Login" class="inputLogin" title="Login" onclick="this.value=''" onfocus="this.value=''" onblur="if(value==''){this.value='Login'}" />
                                     <input type="password" name="password" value="Senha" class="inputSenha" title="Senha" onclick="this.value=''" onfocus="this.value=''" onblur="if(value==''){this.value='Senha'}" />
-                                    <a href="" class="lnr lnr-eye"></a>
+                                    <i class="lnr lnr-eye"></i>
                                     <button type="submit" class="bt-ok">OK</button>                       
                                 </form>
                                 <p><a href="#">Esqueci a senha</a></p>
